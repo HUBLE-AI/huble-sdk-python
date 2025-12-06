@@ -6,10 +6,6 @@ from typing import Optional
 sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_audio_operations_api import V2AudioOperationsApi
-from llmhub_generated.models.v2_audio_transcribe_request import V2AudioTranscribeRequest
-from llmhub_generated.models.v2_audio_synthesize_request import V2AudioSynthesizeRequest
-from llmhub_generated.models.v2_audio_enhance_request import V2AudioEnhanceRequest
-from llmhub_generated.models.v2_audio_separate_request import V2AudioSeparateRequest
 from llmhub_generated.models.v2_base_response import V2BaseResponse
 from llmhub_generated.exceptions import ApiException
 
@@ -68,15 +64,17 @@ class AudioOperations:
             >>> print(response.content)
         """
         try:
-            request = V2AudioTranscribeRequest(
-                audio_url=audio_url,
-                language=language,
-                provider=provider,
-                model=model
-            )
+            request_data = {"audio_url": audio_url}
+            if language is not None:
+                request_data["language"] = language
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.transcribe_audio_api_v2_audio_transcribe_post(
                 x_api_key=self._api_key,
-                v2_audio_transcribe_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -111,16 +109,19 @@ class AudioOperations:
             >>> print(response.audio_url)
         """
         try:
-            request = V2AudioSynthesizeRequest(
-                text=text,
-                voice=voice,
-                language=language,
-                provider=provider,
-                model=model
-            )
+            request_data = {"text": text}
+            if voice is not None:
+                request_data["voice"] = voice
+            if language is not None:
+                request_data["language"] = language
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.synthesize_audio_api_v2_audio_synthesize_post(
                 x_api_key=self._api_key,
-                v2_audio_synthesize_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -151,15 +152,17 @@ class AudioOperations:
             ... )
         """
         try:
-            request = V2AudioEnhanceRequest(
-                audio_url=audio_url,
-                enhancement_type=enhancement_type,
-                provider=provider,
-                model=model
-            )
+            request_data = {"audio_url": audio_url}
+            if enhancement_type is not None:
+                request_data["enhancement_type"] = enhancement_type
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.enhance_audio_api_v2_audio_enhance_post(
                 x_api_key=self._api_key,
-                v2_audio_enhance_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -190,15 +193,17 @@ class AudioOperations:
             ... )
         """
         try:
-            request = V2AudioSeparateRequest(
-                audio_url=audio_url,
-                separation_type=separation_type,
-                provider=provider,
-                model=model
-            )
+            request_data = {"audio_url": audio_url}
+            if separation_type is not None:
+                request_data["separation_type"] = separation_type
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.separate_audio_api_v2_audio_separate_post(
                 x_api_key=self._api_key,
-                v2_audio_separate_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)

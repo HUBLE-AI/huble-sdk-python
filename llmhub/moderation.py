@@ -6,9 +6,6 @@ from typing import Optional, List
 sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_moderation_api import V2ModerationApi
-from llmhub_generated.models.v2_moderation_moderate_request import V2ModerationModerateRequest
-from llmhub_generated.models.v2_moderation_detect_request import V2ModerationDetectRequest
-from llmhub_generated.models.v2_moderation_toxicity_request import V2ModerationToxicityRequest
 from llmhub_generated.models.v2_base_response import V2BaseResponse
 from llmhub_generated.exceptions import ApiException
 
@@ -67,15 +64,17 @@ class ModerationOperations:
             >>> print(response.flagged)
         """
         try:
-            request = V2ModerationModerateRequest(
-                content=content,
-                categories=categories,
-                provider=provider,
-                model=model
-            )
+            request_data = {"content": content}
+            if categories is not None:
+                request_data["categories"] = categories
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.moderate_content_api_v2_moderation_moderate_post(
                 x_api_key=self._api_key,
-                v2_moderation_moderate_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -106,15 +105,17 @@ class ModerationOperations:
             ... )
         """
         try:
-            request = V2ModerationDetectRequest(
-                content=content,
-                detection_types=detection_types,
-                provider=provider,
-                model=model
-            )
+            request_data = {"content": content}
+            if detection_types is not None:
+                request_data["detection_types"] = detection_types
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.detect_content_types_api_v2_moderation_detect_post(
                 x_api_key=self._api_key,
-                v2_moderation_detect_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -146,15 +147,17 @@ class ModerationOperations:
             >>> print(response.scores)
         """
         try:
-            request = V2ModerationToxicityRequest(
-                content=content,
-                attributes=attributes,
-                provider=provider,
-                model=model
-            )
+            request_data = {"content": content}
+            if attributes is not None:
+                request_data["attributes"] = attributes
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.analyze_toxicity_api_v2_moderation_analyze_toxicity_post(
                 x_api_key=self._api_key,
-                v2_moderation_toxicity_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)

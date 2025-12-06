@@ -6,12 +6,6 @@ from typing import Optional
 sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_image_operations_api import V2ImageOperationsApi
-from llmhub_generated.models.v2_image_generate_request import V2ImageGenerateRequest
-from llmhub_generated.models.v2_image_edit_request import V2ImageEditRequest
-from llmhub_generated.models.v2_image_analyze_request import V2ImageAnalyzeRequest
-from llmhub_generated.models.v2_image_describe_request import V2ImageDescribeRequest
-from llmhub_generated.models.v2_image_upscale_request import V2ImageUpscaleRequest
-from llmhub_generated.models.v2_image_vary_request import V2ImageVaryRequest
 from llmhub_generated.models.v2_base_response import V2BaseResponse
 from llmhub_generated.exceptions import ApiException
 
@@ -73,16 +67,19 @@ class ImageOperations:
             >>> print(response.image_url)
         """
         try:
-            request = V2ImageGenerateRequest(
-                prompt=prompt,
-                size=size,
-                style=style,
-                provider=provider,
-                model=model
-            )
+            request_data = {"prompt": prompt}
+            if size is not None:
+                request_data["size"] = size
+            if style is not None:
+                request_data["style"] = style
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.generate_image_api_v2_image_generate_post(
                 x_api_key=self._api_key,
-                v2_image_generate_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -115,16 +112,17 @@ class ImageOperations:
             ... )
         """
         try:
-            request = V2ImageEditRequest(
-                image_url=image_url,
-                prompt=prompt,
-                mask_url=mask_url,
-                provider=provider,
-                model=model
-            )
+            request_data = {"image_url": image_url, "prompt": prompt}
+            if mask_url is not None:
+                request_data["mask_url"] = mask_url
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.edit_image_api_v2_image_edit_post(
                 x_api_key=self._api_key,
-                v2_image_edit_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -155,15 +153,17 @@ class ImageOperations:
             ... )
         """
         try:
-            request = V2ImageAnalyzeRequest(
-                image_url=image_url,
-                analysis_type=analysis_type,
-                provider=provider,
-                model=model
-            )
+            request_data = {"image_url": image_url}
+            if analysis_type is not None:
+                request_data["analysis_type"] = analysis_type
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.analyze_image_api_v2_image_analyze_post(
                 x_api_key=self._api_key,
-                v2_image_analyze_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -195,15 +195,17 @@ class ImageOperations:
             >>> print(response.content)
         """
         try:
-            request = V2ImageDescribeRequest(
-                image_url=image_url,
-                detail_level=detail_level,
-                provider=provider,
-                model=model
-            )
+            request_data = {"image_url": image_url}
+            if detail_level is not None:
+                request_data["detail_level"] = detail_level
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.describe_image_api_v2_image_describe_post(
                 x_api_key=self._api_key,
-                v2_image_describe_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -234,15 +236,17 @@ class ImageOperations:
             ... )
         """
         try:
-            request = V2ImageUpscaleRequest(
-                image_url=image_url,
-                scale_factor=scale_factor,
-                provider=provider,
-                model=model
-            )
+            request_data = {"image_url": image_url}
+            if scale_factor is not None:
+                request_data["scale_factor"] = scale_factor
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.upscale_image_api_v2_image_upscale_post(
                 x_api_key=self._api_key,
-                v2_image_upscale_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
@@ -273,15 +277,17 @@ class ImageOperations:
             ... )
         """
         try:
-            request = V2ImageVaryRequest(
-                image_url=image_url,
-                variation_strength=variation_strength,
-                provider=provider,
-                model=model
-            )
+            request_data = {"image_url": image_url}
+            if variation_strength is not None:
+                request_data["variation_strength"] = variation_strength
+            if provider is not None:
+                request_data["provider"] = provider
+            if model is not None:
+                request_data["model"] = model
+
             return self._api.vary_image_api_v2_image_vary_post(
                 x_api_key=self._api_key,
-                v2_image_vary_request=request
+                body=request_data
             )
         except ApiException as e:
             raise self._convert_exception(e)
