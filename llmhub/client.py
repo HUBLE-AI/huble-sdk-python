@@ -18,6 +18,7 @@ from llmhub.discovery import DiscoveryOperations
 from llmhub.prompts import PromptOperations
 from llmhub.data import DataOperations
 from llmhub.agent import AgentOperations
+from llmhub.chat import ChatOperations
 
 
 # Sensible default for local-development HUBLE: backend listens on :4000.
@@ -41,6 +42,7 @@ class LLMHub:
         - prompts: Manage reusable prompt templates
         - data: Data operations (embed, rerank)
         - agent: Multi-turn chat with tool-use (/api/v2/agent/chat)
+        - chat.completions.create: OpenAI SDK drop-in (/api/v2/chat/completions)
 
     Configuration precedence:
         1. Explicit constructor arguments
@@ -105,6 +107,7 @@ class LLMHub:
 
         # Hand-crafted urllib3 modules (endpoints absent from the generated layer).
         self.agent = AgentOperations(self.base_url, self.api_key)
+        self.chat = ChatOperations(self.base_url, self.api_key)
 
     def __repr__(self) -> str:
         return f"LLMHub(base_url='{self.base_url}')"
