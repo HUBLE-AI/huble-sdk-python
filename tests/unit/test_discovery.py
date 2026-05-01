@@ -92,25 +92,19 @@ class TestGetProviders:
             response = discovery_ops.get_providers()
             assert len(response.providers) == 2
 
-    def test_get_providers_with_modality(self, discovery_ops, mock_providers_response):
-        """Test providers retrieval with modality filter."""
+    def test_get_providers_passes_only_api_key(self, discovery_ops, mock_providers_response):
+        """Backend's /api/v2/discovery/providers takes no query params —
+        verify the wrapper does not forward anything else (regression for
+        the prior ``modality=`` arg that the generated layer rejects)."""
         with patch.object(
             discovery_ops._api,
             'get_providers_api_v2_discovery_providers_get',
             return_value=mock_providers_response
-        ):
-            response = discovery_ops.get_providers(modality="text")
-            assert len(response.providers) == 2
-
-    def test_get_providers_no_filter(self, discovery_ops, mock_providers_response):
-        """Test providers retrieval without filter."""
-        with patch.object(
-            discovery_ops._api,
-            'get_providers_api_v2_discovery_providers_get',
-            return_value=mock_providers_response
-        ):
-            response = discovery_ops.get_providers(modality=None)
+        ) as mock_call:
+            response = discovery_ops.get_providers()
             assert response.providers is not None
+            kwargs = mock_call.call_args.kwargs
+            assert set(kwargs.keys()) == {"x_api_key"}
 
 
 class TestGetModels:
@@ -136,28 +130,34 @@ class TestGetModels:
             response = discovery_ops.get_models(provider="claude")
             assert len(response.models) == 2
 
-    def test_get_models_with_modality(self, discovery_ops, mock_models_response):
-        """Test models retrieval with modality filter."""
+    def test_get_models_with_model_type(self, discovery_ops, mock_models_response):
+        """Test models retrieval with model_type filter (matches backend
+        /api/v2/discovery/models query param name)."""
         with patch.object(
             discovery_ops._api,
             'get_models_api_v2_discovery_models_get',
             return_value=mock_models_response
-        ):
-            response = discovery_ops.get_models(modality="text")
+        ) as mock_call:
+            response = discovery_ops.get_models(model_type="text")
             assert len(response.models) == 2
+            assert mock_call.call_args.kwargs["model_type"] == "text"
+            assert mock_call.call_args.kwargs["provider"] is None
 
     def test_get_models_with_both_filters(self, discovery_ops, mock_models_response):
-        """Test models retrieval with both provider and modality filters."""
+        """Test models retrieval with both provider and model_type filters."""
         with patch.object(
             discovery_ops._api,
             'get_models_api_v2_discovery_models_get',
             return_value=mock_models_response
-        ):
+        ) as mock_call:
             response = discovery_ops.get_models(
                 provider="claude",
-                modality="text"
+                model_type="text",
             )
             assert len(response.models) == 2
+            kwargs = mock_call.call_args.kwargs
+            assert kwargs["provider"] == "claude"
+            assert kwargs["model_type"] == "text"
 
 
 class TestDiscoveryErrorHandling:

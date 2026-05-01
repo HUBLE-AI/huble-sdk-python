@@ -57,12 +57,9 @@ class DiscoveryOperations:
         except ApiException as e:
             raise convert_api_exception(e)
 
-    def get_providers(self, modality: Optional[str] = None):
+    def get_providers(self):
         """
         Get list of available providers.
-
-        Args:
-            modality: Filter by modality (e.g., 'text', 'image', 'audio')
 
         Returns:
             List of available providers
@@ -72,14 +69,13 @@ class DiscoveryOperations:
             LLMHubError: Other API errors
 
         Example:
-            >>> providers = client.discovery.get_providers(modality="text")
+            >>> providers = client.discovery.get_providers()
             >>> for provider in providers:
             ...     print(f"{provider.name}: {provider.description}")
         """
         try:
             return self._api.get_providers_api_v2_discovery_providers_get(
                 x_api_key=self._api_key,
-                modality=modality
             )
         except ApiException as e:
             raise convert_api_exception(e)
@@ -87,14 +83,14 @@ class DiscoveryOperations:
     def get_models(
         self,
         provider: Optional[str] = None,
-        modality: Optional[str] = None
+        model_type: Optional[str] = None,
     ):
         """
         Get list of available models.
 
         Args:
-            provider: Filter by provider name (e.g., 'claude', 'openai')
-            modality: Filter by modality (e.g., 'text', 'image', 'audio')
+            provider: Filter by provider name (e.g., 'claude', 'openai').
+            model_type: Filter by model type (e.g., 'text', 'image', 'audio').
 
         Returns:
             List of available models with pricing and capabilities
@@ -106,7 +102,7 @@ class DiscoveryOperations:
         Example:
             >>> models = client.discovery.get_models(
             ...     provider="claude",
-            ...     modality="text"
+            ...     model_type="text",
             ... )
             >>> for model in models:
             ...     print(f"{model.name}: ${model.price_per_1k_tokens}")
@@ -115,7 +111,7 @@ class DiscoveryOperations:
             return self._api.get_models_api_v2_discovery_models_get(
                 x_api_key=self._api_key,
                 provider=provider,
-                modality=modality
+                model_type=model_type,
             )
         except ApiException as e:
             raise convert_api_exception(e)
