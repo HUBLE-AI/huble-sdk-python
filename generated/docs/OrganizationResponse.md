@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **currency_code** | **str** |  | 
 **payment_method** | **str** |  | 
 **payment_terms_days** | **int** |  | 
-**monthly_budget_usd** | **float** |  | 
-**current_month_spent_usd** | **float** |  | 
+**monthly_budget_eur** | **float** |  | 
+**current_month_spent_eur** | **float** |  | 
 **is_active** | **bool** |  | 
 **notes** | **str** |  | 
 **created_at** | **datetime** |  | 

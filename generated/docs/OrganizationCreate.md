@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **currency_code** | **str** |  | [optional] 
 **payment_method** | **str** |  | [optional] 
 **payment_terms_days** | **int** |  | [optional] 
-**monthly_budget_usd** | **float** |  | [optional] 
+**monthly_budget_eur** | **float** |  | [optional] 
 **is_active** | **bool** |  | [optional] 
 **notes** | **str** |  | [optional] 
 

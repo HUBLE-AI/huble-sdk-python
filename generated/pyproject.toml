@@ -1,12 +1,12 @@
 [project]
 name = "llmhub_generated"
 version = "1.0.0"
-description = "llm_hub"
+description = "huble"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
 ]
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "llm_hub"]
+keywords = ["OpenAPI", "OpenAPI-Generator", "huble"]
 requires-python = ">=3.9"
 
 dependencies = [

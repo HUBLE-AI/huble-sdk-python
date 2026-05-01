@@ -1,9 +1,6 @@
 """Discovery operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_discovery_api import V2DiscoveryApi
 from llmhub_generated.exceptions import ApiException
@@ -58,14 +55,11 @@ class DiscoveryOperations:
                 x_api_key=self._api_key
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
-    def get_providers(self, modality: Optional[str] = None):
+    def get_providers(self):
         """
         Get list of available providers.
-
-        Args:
-            modality: Filter by modality (e.g., 'text', 'image', 'audio')
 
         Returns:
             List of available providers
@@ -75,29 +69,28 @@ class DiscoveryOperations:
             LLMHubError: Other API errors
 
         Example:
-            >>> providers = client.discovery.get_providers(modality="text")
+            >>> providers = client.discovery.get_providers()
             >>> for provider in providers:
             ...     print(f"{provider.name}: {provider.description}")
         """
         try:
             return self._api.get_providers_api_v2_discovery_providers_get(
                 x_api_key=self._api_key,
-                modality=modality
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def get_models(
         self,
         provider: Optional[str] = None,
-        modality: Optional[str] = None
+        model_type: Optional[str] = None,
     ):
         """
         Get list of available models.
 
         Args:
-            provider: Filter by provider name (e.g., 'claude', 'openai')
-            modality: Filter by modality (e.g., 'text', 'image', 'audio')
+            provider: Filter by provider name (e.g., 'claude', 'openai').
+            model_type: Filter by model type (e.g., 'text', 'image', 'audio').
 
         Returns:
             List of available models with pricing and capabilities
@@ -109,7 +102,7 @@ class DiscoveryOperations:
         Example:
             >>> models = client.discovery.get_models(
             ...     provider="claude",
-            ...     modality="text"
+            ...     model_type="text",
             ... )
             >>> for model in models:
             ...     print(f"{model.name}: ${model.price_per_1k_tokens}")
@@ -118,37 +111,8 @@ class DiscoveryOperations:
             return self._api.get_models_api_v2_discovery_models_get(
                 x_api_key=self._api_key,
                 provider=provider,
-                modality=modality
+                model_type=model_type,
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
-    def _convert_exception(self, e: ApiException) -> Exception:
-        """
-        Convert API exceptions to SDK exceptions.
-
-        Args:
-            e: ApiException from generated client
-
-        Returns:
-            Appropriate SDK exception
-        """
-        status = getattr(e, 'status', 500)
-        message = str(e)
-
-        if status == 401:
-            return AuthenticationError("Invalid API key or authentication failed")
-        elif status == 403:
-            return AuthenticationError("Access forbidden - check API key permissions")
-        elif status == 429:
-            retry_after = None
-            if hasattr(e, 'headers') and 'Retry-After' in e.headers:
-                try:
-                    retry_after = int(e.headers['Retry-After'])
-                except (ValueError, TypeError):
-                    pass
-            return RateLimitError("Rate limit exceeded", retry_after=retry_after)
-        elif 500 <= status < 600:
-            return ServerError(f"Server error: {message}")
-        else:
-            return LLMHubError(f"API error: {message}")

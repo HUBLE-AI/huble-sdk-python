@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **total_commission_last_month_eur** | **float** |  | 
 **total_commission_ytd_eur** | **float** |  | 
 **total_api_calls_this_month** | **int** |  | 
-**total_spent_this_month_usd** | **float** |  | 
+**total_spent_this_month_eur** | **float** |  | 
 **organizations** | **List[Dict[str, object]]** |  | 
 **recent_reports** | [**List[CommissionReportResponse]**](CommissionReportResponse.md) |  | 
 

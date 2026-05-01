@@ -1,9 +1,6 @@
 """Data operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import List, Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_data_operations_api import V2DataOperationsApi
 from llmhub_generated.models.v2_data_embed_request import V2DataEmbedRequest
@@ -80,7 +77,7 @@ class DataOperations:
                 v2_data_embed_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
         except ValidationError:
             raise
 
@@ -127,28 +124,5 @@ class DataOperations:
                 v2_data_rerank_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
-    def _convert_exception(self, e: ApiException) -> Exception:
-        """Convert API exceptions to SDK exceptions."""
-        status = getattr(e, 'status', 500)
-        message = str(e)
-
-        if status == 401:
-            return AuthenticationError("Invalid API key or authentication failed")
-        elif status == 403:
-            return AuthenticationError("Access forbidden - check API key permissions")
-        elif status == 422:
-            return ValidationError(f"Validation error: {message}")
-        elif status == 429:
-            retry_after = None
-            if hasattr(e, 'headers') and 'Retry-After' in e.headers:
-                try:
-                    retry_after = int(e.headers['Retry-After'])
-                except (ValueError, TypeError):
-                    pass
-            return RateLimitError("Rate limit exceeded", retry_after=retry_after)
-        elif 500 <= status < 600:
-            return ServerError(f"Server error: {message}")
-        else:
-            return LLMHubError(f"API error: {message}")

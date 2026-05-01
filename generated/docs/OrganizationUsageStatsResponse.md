@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **total_api_clients** | **int** |  | 
 **active_api_clients** | **int** |  | 
 **current_month_calls** | **int** |  | 
-**current_month_cost_usd** | **float** |  | 
+**current_month_cost_eur** | **float** |  | 
 **last_30_days_calls** | **int** |  | 
-**last_30_days_cost_usd** | **float** |  | 
-**top_models** | **List[Dict[str, object]]** |  | 
+**last_30_days_cost_eur** | **float** |  | 
+**top_models** | **List[Optional[Dict[str, object]]]** |  | 
 **budget_utilization_percentage** | **float** |  | 
 
 ## Example

@@ -1,9 +1,6 @@
 """Text operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional, List
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_text_operations_api import V2TextOperationsApi
 from llmhub_generated.models.v2_text_generate_request import V2TextGenerateRequest
@@ -106,7 +103,7 @@ class TextOperations:
                 v2_text_generate_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def translate(
         self,
@@ -154,7 +151,7 @@ class TextOperations:
                 v2_text_translate_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def summarize(
         self,
@@ -200,7 +197,7 @@ class TextOperations:
                 v2_text_summarize_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def rewrite(
         self,
@@ -239,7 +236,7 @@ class TextOperations:
                 v2_text_rewrite_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def expand(
         self,
@@ -274,7 +271,7 @@ class TextOperations:
                 v2_text_expand_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def condense(
         self,
@@ -309,7 +306,7 @@ class TextOperations:
                 v2_text_condense_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def analyze(
         self,
@@ -348,7 +345,7 @@ class TextOperations:
                 v2_text_analyze_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def classify(
         self,
@@ -387,7 +384,7 @@ class TextOperations:
                 v2_text_classify_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def extract(
         self,
@@ -426,7 +423,7 @@ class TextOperations:
                 v2_text_extract_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def compare(
         self,
@@ -469,39 +466,5 @@ class TextOperations:
                 v2_text_compare_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
-    def _convert_exception(self, e: ApiException) -> Exception:
-        """
-        Convert API exceptions to SDK exceptions.
-
-        Args:
-            e: ApiException from generated client
-
-        Returns:
-            Appropriate SDK exception
-        """
-        status = getattr(e, 'status', 500)
-        message = str(e)
-
-        if status == 401:
-            return AuthenticationError("Invalid API key or authentication failed")
-        elif status == 403:
-            return AuthenticationError("Access forbidden - check API key permissions")
-        elif status == 404:
-            return NotFoundError("Resource not found")
-        elif status == 422:
-            return ValidationError(f"Validation error: {message}")
-        elif status == 429:
-            # Extract retry_after from headers if available
-            retry_after = None
-            if hasattr(e, 'headers') and 'Retry-After' in e.headers:
-                try:
-                    retry_after = int(e.headers['Retry-After'])
-                except (ValueError, TypeError):
-                    pass
-            return RateLimitError("Rate limit exceeded", retry_after=retry_after)
-        elif 500 <= status < 600:
-            return ServerError(f"Server error: {message}")
-        else:
-            return LLMHubError(f"API error: {message}")
