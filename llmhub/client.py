@@ -17,6 +17,7 @@ from llmhub.enrichment import EnrichmentOperations
 from llmhub.discovery import DiscoveryOperations
 from llmhub.prompts import PromptOperations
 from llmhub.data import DataOperations
+from llmhub.agent import AgentOperations
 
 
 # Sensible default for local-development HUBLE: backend listens on :4000.
@@ -39,6 +40,7 @@ class LLMHub:
         - discovery: Discover available providers and models
         - prompts: Manage reusable prompt templates
         - data: Data operations (embed, rerank)
+        - agent: Multi-turn chat with tool-use (/api/v2/agent/chat)
 
     Configuration precedence:
         1. Explicit constructor arguments
@@ -100,6 +102,9 @@ class LLMHub:
         self.discovery = DiscoveryOperations(self._client, self.api_key)
         self.prompts = PromptOperations(self._client, self.api_key)
         self.data = DataOperations(self._client, self.api_key)
+
+        # Hand-crafted urllib3 modules (endpoints absent from the generated layer).
+        self.agent = AgentOperations(self.base_url, self.api_key)
 
     def __repr__(self) -> str:
         return f"LLMHub(base_url='{self.base_url}')"
