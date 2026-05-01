@@ -94,7 +94,7 @@ class VideoOperations:
                 v2_video_generate_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def describe(
         self,
@@ -134,7 +134,7 @@ class VideoOperations:
                 v2_video_describe_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def clip(
         self,
@@ -183,7 +183,7 @@ class VideoOperations:
                 body=request_data
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def extend(
         self,
@@ -226,7 +226,7 @@ class VideoOperations:
                 v2_video_extend_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def interpolate(
         self,
@@ -265,7 +265,7 @@ class VideoOperations:
                 v2_video_interpolate_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def remix(
         self,
@@ -308,7 +308,7 @@ class VideoOperations:
                 v2_video_remix_request=request
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def get_project_clips(
         self,
@@ -336,7 +336,7 @@ class VideoOperations:
                 project_id=project_id
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def share_project(
         self,
@@ -368,7 +368,7 @@ class VideoOperations:
                 body=request_data
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
     def handle_webhook(
         self,
@@ -395,28 +395,5 @@ class VideoOperations:
                 body=webhook_data
             )
         except ApiException as e:
-            raise self._convert_exception(e)
+            raise convert_api_exception(e)
 
-    def _convert_exception(self, e: ApiException) -> Exception:
-        """Convert API exceptions to SDK exceptions."""
-        status = getattr(e, 'status', 500)
-        message = str(e)
-
-        if status == 401:
-            return AuthenticationError("Invalid API key or authentication failed")
-        elif status == 403:
-            return AuthenticationError("Access forbidden - check API key permissions")
-        elif status == 422:
-            return ValidationError(f"Validation error: {message}")
-        elif status == 429:
-            retry_after = None
-            if hasattr(e, 'headers') and 'Retry-After' in e.headers:
-                try:
-                    retry_after = int(e.headers['Retry-After'])
-                except (ValueError, TypeError):
-                    pass
-            return RateLimitError("Rate limit exceeded", retry_after=retry_after)
-        elif 500 <= status < 600:
-            return ServerError(f"Server error: {message}")
-        else:
-            return LLMHubError(f"API error: {message}")
