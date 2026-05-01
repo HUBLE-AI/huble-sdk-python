@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **super_dev_email** | **str** |  | 
 **total_organizations** | **int** |  | 
 **total_commission_eur** | **float** |  | 
-**total_spent_usd** | **float** |  | 
+**total_spent_eur** | **float** |  | 
 **total_api_calls** | **int** |  | 
 **period_start** | **datetime** |  | 
 **period_end** | **datetime** |  | 

@@ -22,17 +22,25 @@ Method | HTTP request | Description
 [**get_daily_costs_api_v1_admin_billing_daily_get**](AdminApi.md#get_daily_costs_api_v1_admin_billing_daily_get) | **GET** /api/v1/admin/billing/daily | Get Daily Costs
 [**get_daily_system_metrics_api_v1_admin_system_daily_metrics_get**](AdminApi.md#get_daily_system_metrics_api_v1_admin_system_daily_metrics_get) | **GET** /api/v1/admin/system/daily-metrics | Get Daily System Metrics
 [**get_dashboard_stats_api_v1_admin_stats_get**](AdminApi.md#get_dashboard_stats_api_v1_admin_stats_get) | **GET** /api/v1/admin/stats | Get Dashboard Stats
+[**get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get**](AdminApi.md#get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get) | **GET** /api/v1/admin/pricing/endpoints | Get Endpoint Catalog Pricing
 [**get_growth_metrics_api_v1_admin_system_growth_metrics_get**](AdminApi.md#get_growth_metrics_api_v1_admin_system_growth_metrics_get) | **GET** /api/v1/admin/system/growth-metrics | Get Growth Metrics
+[**get_margin_analysis_api_v1_admin_billing_margin_analysis_get**](AdminApi.md#get_margin_analysis_api_v1_admin_billing_margin_analysis_get) | **GET** /api/v1/admin/billing/margin-analysis | Get Margin Analysis
 [**get_model_types_api_v1_admin_model_types_get**](AdminApi.md#get_model_types_api_v1_admin_model_types_get) | **GET** /api/v1/admin/model-types | Get Model Types
 [**get_model_usage_stats_api_v1_admin_system_model_usage_get**](AdminApi.md#get_model_usage_stats_api_v1_admin_system_model_usage_get) | **GET** /api/v1/admin/system/model-usage | Get Model Usage Stats
 [**get_org_analytics_api_v1_admin_organizations_org_id_analytics_get**](AdminApi.md#get_org_analytics_api_v1_admin_organizations_org_id_analytics_get) | **GET** /api/v1/admin/organizations/{org_id}/analytics | Get Org Analytics
 [**get_organization_rankings_api_v1_admin_system_organization_rankings_get**](AdminApi.md#get_organization_rankings_api_v1_admin_system_organization_rankings_get) | **GET** /api/v1/admin/system/organization-rankings | Get Organization Rankings
 [**get_organizations_api_v1_admin_billing_organizations_get**](AdminApi.md#get_organizations_api_v1_admin_billing_organizations_get) | **GET** /api/v1/admin/billing/organizations | Get Organizations
 [**get_provider_costs_api_v1_admin_billing_by_provider_get**](AdminApi.md#get_provider_costs_api_v1_admin_billing_by_provider_get) | **GET** /api/v1/admin/billing/by-provider | Get Provider Costs
+[**get_provider_detail_api_v1_admin_providers_provider_key_detail_get**](AdminApi.md#get_provider_detail_api_v1_admin_providers_provider_key_detail_get) | **GET** /api/v1/admin/providers/{provider_key}/detail | Get Provider Detail
 [**get_provider_models_api_v1_admin_providers_provider_id_models_get**](AdminApi.md#get_provider_models_api_v1_admin_providers_provider_id_models_get) | **GET** /api/v1/admin/providers/{provider_id}/models | Get Provider Models
+[**get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get**](AdminApi.md#get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get) | **GET** /api/v1/admin/providers/{provider_key}/models/detailed | Get Provider Models Detailed
 [**get_provider_performance_api_v1_admin_system_provider_performance_get**](AdminApi.md#get_provider_performance_api_v1_admin_system_provider_performance_get) | **GET** /api/v1/admin/system/provider-performance | Get Provider Performance
 [**get_provider_templates_api_v1_admin_provider_templates_get**](AdminApi.md#get_provider_templates_api_v1_admin_provider_templates_get) | **GET** /api/v1/admin/provider-templates | Get Provider Templates
+[**get_provider_usage_api_v1_admin_providers_provider_key_usage_get**](AdminApi.md#get_provider_usage_api_v1_admin_providers_provider_key_usage_get) | **GET** /api/v1/admin/providers/{provider_key}/usage | Get Provider Usage
 [**get_providers_from_registry_api_v1_admin_providers_registry_get**](AdminApi.md#get_providers_from_registry_api_v1_admin_providers_registry_get) | **GET** /api/v1/admin/providers/registry | Get Providers From Registry
+[**get_providers_list_api_v1_admin_providers_get**](AdminApi.md#get_providers_list_api_v1_admin_providers_get) | **GET** /api/v1/admin/providers | Get Providers List
+[**get_revenue_metrics_api_v1_admin_billing_revenue_get**](AdminApi.md#get_revenue_metrics_api_v1_admin_billing_revenue_get) | **GET** /api/v1/admin/billing/revenue | Get Revenue Metrics
+[**get_system_audit_logs_api_v1_admin_system_audit_logs_get**](AdminApi.md#get_system_audit_logs_api_v1_admin_system_audit_logs_get) | **GET** /api/v1/admin/system/audit-logs | Get System Audit Logs
 [**get_system_health_api_v1_admin_system_health_get**](AdminApi.md#get_system_health_api_v1_admin_system_health_get) | **GET** /api/v1/admin/system/health | Get System Health
 [**get_system_overview_api_v1_admin_system_overview_get**](AdminApi.md#get_system_overview_api_v1_admin_system_overview_get) | **GET** /api/v1/admin/system/overview | Get System Overview
 [**get_team_insights_api_v1_admin_organizations_org_id_team_insights_get**](AdminApi.md#get_team_insights_api_v1_admin_organizations_org_id_team_insights_get) | **GET** /api/v1/admin/organizations/{org_id}/team-insights | Get Team Insights
@@ -48,6 +56,7 @@ Method | HTTP request | Description
 [**test_provider_api_key_api_v1_admin_providers_provider_key_test_key_post**](AdminApi.md#test_provider_api_key_api_v1_admin_providers_provider_key_test_key_post) | **POST** /api/v1/admin/providers/{provider_key}/test-key | Test Provider Api Key
 [**toggle_model_api_v1_admin_models_model_id_toggle_post**](AdminApi.md#toggle_model_api_v1_admin_models_model_id_toggle_post) | **POST** /api/v1/admin/models/{model_id}/toggle | Toggle Model
 [**update_client_api_v1_admin_clients_client_id_patch**](AdminApi.md#update_client_api_v1_admin_clients_client_id_patch) | **PATCH** /api/v1/admin/clients/{client_id} | Update Client
+[**update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch**](AdminApi.md#update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch) | **PATCH** /api/v1/admin/pricing/endpoints/{endpoint_id} | Update Endpoint Pricing
 [**update_model_api_v1_admin_models_model_id_patch**](AdminApi.md#update_model_api_v1_admin_models_model_id_patch) | **PATCH** /api/v1/admin/models/{model_id} | Update Model
 [**update_model_type_api_v1_admin_model_types_type_id_patch**](AdminApi.md#update_model_type_api_v1_admin_model_types_type_id_patch) | **PATCH** /api/v1/admin/model-types/{type_id} | Update Model Type
 [**update_provider_api_key_api_v1_admin_providers_provider_key_api_key_put**](AdminApi.md#update_provider_api_key_api_v1_admin_providers_provider_key_api_key_put) | **PUT** /api/v1/admin/providers/{provider_key}/api-key | Update Provider Api Key
@@ -427,7 +436,7 @@ No authorization required
 
 Delete Provider Api Key
 
-Delete provider API key
+DEPRECATED: API keys are managed via .env file
 
 ### Example
 
@@ -1502,6 +1511,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get**
+> object get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get(category=category, is_active=is_active, session_token=session_token)
+
+Get Endpoint Catalog Pricing
+
+Get all API endpoint catalog entries with pricing
+
+Returns all V2 API endpoints with their fixed pricing configuration.
+Use this endpoint to view and manage per-API-call pricing.
+
+**Required Permission**: super_admin
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    category = 'category_example' # str | Filter by category (optional)
+    is_active = True # bool | Filter by active status (optional)
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Endpoint Catalog Pricing
+        api_response = api_instance.get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get(category=category, is_active=is_active, session_token=session_token)
+        print("The response of AdminApi->get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_endpoint_catalog_pricing_api_v1_admin_pricing_endpoints_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **category** | **str**| Filter by category | [optional] 
+ **is_active** | **bool**| Filter by active status | [optional] 
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_growth_metrics_api_v1_admin_system_growth_metrics_get**
 > object get_growth_metrics_api_v1_admin_system_growth_metrics_get(days=days, session_token=session_token)
 
@@ -1566,6 +1662,93 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **days** | **int**| Period length in days | [optional] [default to 30]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_margin_analysis_api_v1_admin_billing_margin_analysis_get**
+> object get_margin_analysis_api_v1_admin_billing_margin_analysis_get(days=days, group_by=group_by, session_token=session_token)
+
+Get Margin Analysis
+
+Get margin analysis for API endpoints
+
+Analyze profitability by endpoint or category. Shows revenue vs provider cost
+and margin percentage for each.
+
+**Required Permission**: super_admin
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    days = 30 # int | Number of days to analyze (optional) (default to 30)
+    group_by = 'endpoint' # str | Group by: 'endpoint' or 'category' (optional) (default to 'endpoint')
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Margin Analysis
+        api_response = api_instance.get_margin_analysis_api_v1_admin_billing_margin_analysis_get(days=days, group_by=group_by, session_token=session_token)
+        print("The response of AdminApi->get_margin_analysis_api_v1_admin_billing_margin_analysis_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_margin_analysis_api_v1_admin_billing_margin_analysis_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **days** | **int**| Number of days to analyze | [optional] [default to 30]
+ **group_by** | **str**| Group by: &#39;endpoint&#39; or &#39;category&#39; | [optional] [default to &#39;endpoint&#39;]
  **session_token** | **str**|  | [optional] 
 
 ### Return type
@@ -2094,6 +2277,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_provider_detail_api_v1_admin_providers_provider_key_detail_get**
+> Dict[str, object] get_provider_detail_api_v1_admin_providers_provider_key_detail_get(provider_key, time_period=time_period, session_token=session_token)
+
+Get Provider Detail
+
+Get detailed provider information including API key (super_admin only)
+
+Returns:
+- Provider metadata
+- Full API key
+- Usage statistics
+- Useful links
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    provider_key = 'provider_key_example' # str | 
+    time_period = '30d' # str | Time period: 7d, 30d, 90d, 1y, all (optional) (default to '30d')
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Provider Detail
+        api_response = api_instance.get_provider_detail_api_v1_admin_providers_provider_key_detail_get(provider_key, time_period=time_period, session_token=session_token)
+        print("The response of AdminApi->get_provider_detail_api_v1_admin_providers_provider_key_detail_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_provider_detail_api_v1_admin_providers_provider_key_detail_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider_key** | **str**|  | 
+ **time_period** | **str**| Time period: 7d, 30d, 90d, 1y, all | [optional] [default to &#39;30d&#39;]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_provider_models_api_v1_admin_providers_provider_id_models_get**
 > Dict[str, object] get_provider_models_api_v1_admin_providers_provider_id_models_get(provider_id, page=page, page_size=page_size)
 
@@ -2151,6 +2422,99 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get**
+> Dict[str, object] get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get(provider_key, time_period=time_period, model_types=model_types, page=page, page_size=page_size, session_token=session_token)
+
+Get Provider Models Detailed
+
+Get models for a provider with usage statistics and filtering
+
+Features:
+- Filter by model types (multiselect)
+- Usage stats per model for time period
+- Cost breakdown
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    provider_key = 'provider_key_example' # str | 
+    time_period = '30d' # str | Time period: 7d, 30d, 90d, 1y, all (optional) (default to '30d')
+    model_types = 'model_types_example' # str | Comma-separated model types filter (optional)
+    page = 1 # int | Page number (optional) (default to 1)
+    page_size = 50 # int | Items per page (optional) (default to 50)
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Provider Models Detailed
+        api_response = api_instance.get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get(provider_key, time_period=time_period, model_types=model_types, page=page, page_size=page_size, session_token=session_token)
+        print("The response of AdminApi->get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_provider_models_detailed_api_v1_admin_providers_provider_key_models_detailed_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider_key** | **str**|  | 
+ **time_period** | **str**| Time period: 7d, 30d, 90d, 1y, all | [optional] [default to &#39;30d&#39;]
+ **model_types** | **str**| Comma-separated model types filter | [optional] 
+ **page** | **int**| Page number | [optional] [default to 1]
+ **page_size** | **int**| Items per page | [optional] [default to 50]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
 
 ### HTTP request headers
 
@@ -2328,6 +2692,92 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_provider_usage_api_v1_admin_providers_provider_key_usage_get**
+> Dict[str, object] get_provider_usage_api_v1_admin_providers_provider_key_usage_get(provider_key, time_period=time_period, group_by=group_by, session_token=session_token)
+
+Get Provider Usage
+
+Get usage aggregations for a provider over time
+
+Returns time-series data for charting
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    provider_key = 'provider_key_example' # str | 
+    time_period = '30d' # str | Time period: 7d, 30d, 90d, 1y, all (optional) (default to '30d')
+    group_by = 'day' # str | Group by: hour, day, month (optional) (default to 'day')
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Provider Usage
+        api_response = api_instance.get_provider_usage_api_v1_admin_providers_provider_key_usage_get(provider_key, time_period=time_period, group_by=group_by, session_token=session_token)
+        print("The response of AdminApi->get_provider_usage_api_v1_admin_providers_provider_key_usage_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_provider_usage_api_v1_admin_providers_provider_key_usage_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **provider_key** | **str**|  | 
+ **time_period** | **str**| Time period: 7d, 30d, 90d, 1y, all | [optional] [default to &#39;30d&#39;]
+ **group_by** | **str**| Group by: hour, day, month | [optional] [default to &#39;day&#39;]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**Dict[str, object]**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_providers_from_registry_api_v1_admin_providers_registry_get**
 > List[Dict[str, object]] get_providers_from_registry_api_v1_admin_providers_registry_get(session_token=session_token)
 
@@ -2392,6 +2842,277 @@ Name | Type | Description  | Notes
 ### Return type
 
 **List[Dict[str, object]]**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_providers_list_api_v1_admin_providers_get**
+> List[Dict[str, object]] get_providers_list_api_v1_admin_providers_get(time_period=time_period, session_token=session_token)
+
+Get Providers List
+
+Get all providers with usage statistics for super admin dashboard
+
+Returns providers with:
+- Configuration status
+- Model count
+- Token usage for time period
+- Cost for time period
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    time_period = '30d' # str | Time period: 7d, 30d, 90d, 1y, all (optional) (default to '30d')
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Providers List
+        api_response = api_instance.get_providers_list_api_v1_admin_providers_get(time_period=time_period, session_token=session_token)
+        print("The response of AdminApi->get_providers_list_api_v1_admin_providers_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_providers_list_api_v1_admin_providers_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **time_period** | **str**| Time period: 7d, 30d, 90d, 1y, all | [optional] [default to &#39;30d&#39;]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**List[Dict[str, object]]**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_revenue_metrics_api_v1_admin_billing_revenue_get**
+> object get_revenue_metrics_api_v1_admin_billing_revenue_get(days=days, include_breakdown=include_breakdown, session_token=session_token)
+
+Get Revenue Metrics
+
+Get revenue metrics for API call billing
+
+Returns total revenue, provider costs, and margins for the specified period.
+Includes breakdown by category and top endpoints by revenue.
+
+**Required Permission**: super_admin
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    days = 30 # int | Number of days to analyze (optional) (default to 30)
+    include_breakdown = True # bool | Include category/endpoint breakdown (optional) (default to True)
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get Revenue Metrics
+        api_response = api_instance.get_revenue_metrics_api_v1_admin_billing_revenue_get(days=days, include_breakdown=include_breakdown, session_token=session_token)
+        print("The response of AdminApi->get_revenue_metrics_api_v1_admin_billing_revenue_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_revenue_metrics_api_v1_admin_billing_revenue_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **days** | **int**| Number of days to analyze | [optional] [default to 30]
+ **include_breakdown** | **bool**| Include category/endpoint breakdown | [optional] [default to True]
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_system_audit_logs_api_v1_admin_system_audit_logs_get**
+> Dict[str, object] get_system_audit_logs_api_v1_admin_system_audit_logs_get(page=page, page_size=page_size, provider=provider, org_id=org_id, success=success, search=search, start_date=start_date, end_date=end_date, session_token=session_token)
+
+Get System Audit Logs
+
+Get system-wide audit logs (API call logs)
+
+Returns all LLM generation logs across the platform with filtering options.
+
+**Required Permission**: super_admin
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    page = 1 # int | Page number (optional) (default to 1)
+    page_size = 50 # int | Items per page (optional) (default to 50)
+    provider = 'provider_example' # str | Filter by provider (optional)
+    org_id = 'org_id_example' # str | Filter by organization ID (optional)
+    success = True # bool | Filter by success status (optional)
+    search = 'search_example' # str | Search in model, endpoint, error (optional)
+    start_date = 'start_date_example' # str | Start date (ISO format) (optional)
+    end_date = 'end_date_example' # str | End date (ISO format) (optional)
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Get System Audit Logs
+        api_response = api_instance.get_system_audit_logs_api_v1_admin_system_audit_logs_get(page=page, page_size=page_size, provider=provider, org_id=org_id, success=success, search=search, start_date=start_date, end_date=end_date, session_token=session_token)
+        print("The response of AdminApi->get_system_audit_logs_api_v1_admin_system_audit_logs_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_system_audit_logs_api_v1_admin_system_audit_logs_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number | [optional] [default to 1]
+ **page_size** | **int**| Items per page | [optional] [default to 50]
+ **provider** | **str**| Filter by provider | [optional] 
+ **org_id** | **str**| Filter by organization ID | [optional] 
+ **success** | **bool**| Filter by success status | [optional] 
+ **search** | **str**| Search in model, endpoint, error | [optional] 
+ **start_date** | **str**| Start date (ISO format) | [optional] 
+ **end_date** | **str**| End date (ISO format) | [optional] 
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**Dict[str, object]**
 
 ### Authorization
 
@@ -3553,7 +4274,7 @@ No authorization required
 Update Client
 
 Update API client details
-Allows updating: client_name, org_id, contact_email, rate_limit, monthly_budget_usd, is_active
+Allows updating: client_name, org_id, contact_email, rate_limit, monthly_budget_eur, is_active
 
 ### Example
 
@@ -3607,6 +4328,101 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch**
+> object update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch(endpoint_id, base_price_eur=base_price_eur, avg_provider_cost_usd=avg_provider_cost_usd, markup_percentage=markup_percentage, is_active=is_active, description=description, session_token=session_token)
+
+Update Endpoint Pricing
+
+Update pricing for an API endpoint
+
+Modify the fixed per-API-call price for a specific endpoint.
+Only super_admin can modify endpoint pricing.
+
+**Required Permission**: super_admin
+
+### Example
+
+* Bearer Authentication (HTTPBearer):
+
+```python
+import llmhub_generated
+from llmhub_generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = llmhub_generated.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: HTTPBearer
+configuration = llmhub_generated.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with llmhub_generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = llmhub_generated.AdminApi(api_client)
+    endpoint_id = 'endpoint_id_example' # str | 
+    base_price_eur = 3.4 # float | New base price in EUR (optional)
+    avg_provider_cost_usd = 3.4 # float | Average provider cost (optional)
+    markup_percentage = 3.4 # float | Markup percentage (optional)
+    is_active = True # bool | Active status (optional)
+    description = 'description_example' # str | Endpoint description for website (optional)
+    session_token = 'session_token_example' # str |  (optional)
+
+    try:
+        # Update Endpoint Pricing
+        api_response = api_instance.update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch(endpoint_id, base_price_eur=base_price_eur, avg_provider_cost_usd=avg_provider_cost_usd, markup_percentage=markup_percentage, is_active=is_active, description=description, session_token=session_token)
+        print("The response of AdminApi->update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_endpoint_pricing_api_v1_admin_pricing_endpoints_endpoint_id_patch: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **endpoint_id** | **str**|  | 
+ **base_price_eur** | **float**| New base price in EUR | [optional] 
+ **avg_provider_cost_usd** | **float**| Average provider cost | [optional] 
+ **markup_percentage** | **float**| Markup percentage | [optional] 
+ **is_active** | **bool**| Active status | [optional] 
+ **description** | **str**| Endpoint description for website | [optional] 
+ **session_token** | **str**|  | [optional] 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[HTTPBearer](../README.md#HTTPBearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -3763,7 +4579,7 @@ No authorization required
 
 Update Provider Api Key
 
-Update provider API key
+DEPRECATED: API keys are managed via .env file
 
 ### Example
 

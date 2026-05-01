@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **total_input_tokens** | **int** |  | 
 **total_output_tokens** | **int** |  | 
 **total_tokens** | **int** |  | 
-**total_cost_usd** | **float** |  | 
+**total_cost_eur** | **float** |  | 
 **avg_cost_per_call** | **float** |  | 
 **avg_generation_time_ms** | **float** |  | 
 **min_generation_time_ms** | **int** |  | 

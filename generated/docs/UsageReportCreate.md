@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **file_name** | **str** |  | [optional] 
 **file_size_bytes** | **int** |  | [optional] 
 **total_calls** | **int** |  | [optional] [default to 0]
-**total_cost_usd** | **float** |  | [optional] [default to 0.0]
+**total_cost_eur** | **float** |  | [optional] [default to 0.0]
 **total_input_tokens** | **int** |  | [optional] [default to 0]
 **total_output_tokens** | **int** |  | [optional] [default to 0]
 **status** | **str** |  | [optional] [default to 'completed']

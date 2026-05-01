@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **file_size_bytes** | **int** |  | 
 **file_path** | **str** |  | [optional] 
 **total_calls** | **int** |  | 
-**total_cost_usd** | **float** |  | 
+**total_cost_eur** | **float** |  | 
 **total_input_tokens** | **int** |  | 
 **total_output_tokens** | **int** |  | 
 **status** | **str** |  | 

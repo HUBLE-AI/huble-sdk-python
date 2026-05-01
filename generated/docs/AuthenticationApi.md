@@ -1373,12 +1373,11 @@ No authorization required
 
 Register
 
-Register a new user and create their organization (self-service)
+Register a new user with email and password
 
-The first user becomes the organization admin.
-
-**Note:** This endpoint is for GitHub OAuth registration. For email/password
-registration (future feature), provide password in the request body.
+- If org_name is provided: Creates user with organization (user becomes org_admin)
+- If org_name is not provided: Creates individual user (can join/create org later)
+- If invitation_token is provided: Inviter becomes user's Super-Dev
 
 ### Example
 
@@ -1448,12 +1447,11 @@ No authorization required
 
 Register
 
-Register a new user and create their organization (self-service)
+Register a new user with email and password
 
-The first user becomes the organization admin.
-
-**Note:** This endpoint is for GitHub OAuth registration. For email/password
-registration (future feature), provide password in the request body.
+- If org_name is provided: Creates user with organization (user becomes org_admin)
+- If org_name is not provided: Creates individual user (can join/create org later)
+- If invitation_token is provided: Inviter becomes user's Super-Dev
 
 ### Example
 

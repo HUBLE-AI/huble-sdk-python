@@ -1,17 +1,18 @@
 # RegisterRequest
 
-Request schema for user registration with organization creation
+Request schema for user registration (individual or with organization)
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** | User email address | 
-**username** | **str** | Desired username | 
-**full_name** | **str** | User&#39;s full name | 
-**org_name** | **str** | Organization name | 
+**password** | **str** | Password (min 6 characters) | 
+**full_name** | **str** |  | [optional] 
+**org_name** | **str** |  | [optional] 
 **org_legal_name** | **str** |  | [optional] 
 **billing_email** | **str** |  | [optional] 
+**invitation_token** | **str** |  | [optional] 
 
 ## Example
 

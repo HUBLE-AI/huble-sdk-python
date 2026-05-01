@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **cost_usd** | **float** |  | 
 **generation_time_ms** | **int** |  | 
 **log_id** | **str** |  | 
-**results** | **List[Dict[str, object]]** | Ranked documents: [{index, text, score}, ...]. Score 0-1, higher&#x3D;more relevant | 
+**results** | **List[Optional[Dict[str, object]]]** | Ranked documents: [{index, text, score}, ...]. Score 0-1, higher&#x3D;more relevant | 
 **num_results** | **int** | Number of results returned | 
 
 ## Example

@@ -14,10 +14,9 @@ Name | Type | Description | Notes
 **org_name** | **str** |  | [optional] 
 **report_period_start** | **datetime** |  | 
 **report_period_end** | **datetime** |  | 
-**total_spent_usd** | **float** |  | 
+**total_spent_eur** | **float** |  | 
 **commission_percentage** | **float** |  | 
 **commission_eur** | **float** |  | 
-**usd_to_eur_rate** | **float** |  | [optional] 
 **total_api_calls** | **int** |  | 
 **total_input_tokens** | **int** |  | 
 **total_output_tokens** | **int** |  | 

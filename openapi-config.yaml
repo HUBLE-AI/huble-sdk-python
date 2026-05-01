@@ -2,7 +2,7 @@ generatorName: python
 outputDir: generated
 packageName: llmhub_generated
 projectName: llmhub-sdk-python-generated
-packageVersion: 1.0.0
+packageVersion: 1.2.0
 gitRepoId: llmhub-sdk-python
 library: urllib3
 generateSourceCodeOnly: false
