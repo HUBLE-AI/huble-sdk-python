@@ -1,187 +1,210 @@
-# LLMHub Python SDK
+# HUBLE Python SDK (`llmhub`)
 
-Official Python SDK for LLMHub - Unified access to 18+ AI providers with built-in cost tracking and provider management.
+Official Python SDK for **HUBLE** (LLMHub) — a unified gateway to 18+ AI
+providers including **Melious** (EU open-weight), **Claude**, **OpenAI**,
+**Groq**, **Mistral**, **Google Gemini**, **Cohere**, **Ollama**, and more.
+
+Single API surface for text, embeddings, documents, audio (TTS/STT),
+video, images, moderation, enrichment, prompts, and data operations —
+plus a **dual-shape agent endpoint** with tool-use and an **OpenAI SDK
+drop-in** so existing OpenAI clients can swap `base_url` to HUBLE
+without touching their code.
 
 ## Status
 
-**🚧 Under Development** - This SDK is part of the [multi-language SDK initiative](https://github.com/wapsol/llmhub/issues/63).
-
-## Features
-
-- **Unified API**: Single interface for 18+ AI providers (Claude, OpenAI, Groq, Google Gemini, Mistral AI, and more)
-- **11 Modalities**: Text generation, document processing, embeddings, audio (TTS/STT), video generation, image generation, moderation, enrichment, discovery, prompt management, and data operations
-- **Cost Tracking**: Automatic cost tracking for all operations (cost_usd, tokens_used, generation_time_ms)
-- **Provider Flexibility**: Use default providers or override per request
-- **Type Safety**: Full type hints and validation with Pydantic
-- **Python 3.9+**: Compatible with Python 3.9, 3.10, 3.11, and 3.12
+**Alpha (`0.2.0`)** — adoption-ready for Python integrators including the
+internal NOCA Odoo addon collection. PyPI publication pending review.
 
 ## Installation
 
-**Note: Not yet published to PyPI. Coming soon!**
-
 ```bash
 # From source (development)
-git clone https://github.com/wapsol/llmhub-sdk-python.git
-cd llmhub-sdk-python
+git clone https://github.com/HUBLE-AI/huble-sdk-python.git
+cd huble-sdk-python
 pip install -e .
 ```
 
-Once published:
-```bash
-pip install llmhub
-```
+PyPI: _coming soon_ (`pip install llmhub`).
 
 ## Quick Start
 
 ```python
 from llmhub import LLMHub
 
-# Initialize client
-client = LLMHub(
-    api_key="your-api-key-here",
-    base_url="https://your-llmhub-instance.com"  # Optional
-)
+# Reads LLMHUB_API_KEY / LLMHUB_BASE_URL from env when omitted
+client = LLMHub(api_key="mgw_...", base_url="https://api.huble.app")
 
-# Generate text
-response = client.text.generate(
-    prompt="Write a haiku about coding",
-    temperature=0.7
-)
-
-print(response.content)
-print(f"Cost: ${response.cost_usd:.4f}")
-print(f"Provider: {response.provider_used}")
-print(f"Model: {response.model_used}")
+response = client.text.generate(prompt="Write a haiku about coding")
+print(response.content, response.cost_usd, response.provider_used)
 ```
 
-## API Overview
+## Agent endpoint with tool-use — `client.agent.chat()`
 
-### Text Operations
+Multi-turn chat with **dual-shape input** — the SDK accepts either the
+OpenAI message shape or the Anthropic content-blocks shape, and mirrors
+the request shape on the response (or you can override via
+`response_shape`). Tools are first-class and routed through HUBLE's
+provider-agnostic tool layer.
 
 ```python
-# Generate text
+resp = client.agent.chat(
+    messages=[{"role": "user", "content": "What's the weather in Hamburg?"}],
+    tools=[{
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "parameters": {
+                "type": "object",
+                "properties": {"city": {"type": "string"}},
+            },
+        },
+    }],
+    tool_choice="auto",
+    provider="melious",          # default — EU-hosted, open weights, low cost
+    model="deepseek-v3.2",       # default for Melious
+)
+print(resp.content)              # str (may be empty when tool-call goes first)
+print(resp.tool_calls)           # [{"id":"call_x", "type":"function", ...}]
+print(resp.stop_reason)          # "stop" | "tool_calls" | "length"
+print(resp.cost_usd, resp.provider_metadata)
+```
+
+### Anthropic shape (auto-detected)
+
+```python
+resp = client.agent.chat(
+    system="Be concise.",
+    messages=[
+        {"role": "user", "content": [{"type": "text", "text": "weather?"}]},
+    ],
+    tools=[{
+        "name": "get_weather",
+        "description": "Look up current weather",
+        "input_schema": {"type": "object", "properties": {"city": {"type": "string"}}},
+    }],
+    tool_choice={"type": "auto"},
+)
+# resp.content is a list of content blocks, resp.stop_reason is "tool_use"
+```
+
+## OpenAI SDK drop-in — `client.chat.completions.create()`
+
+Hits `/api/v2/chat/completions` and returns an OpenAI-shape
+`ChatCompletion`. Code written for `openai.OpenAI()` can swap `base_url`
+to your HUBLE host without changing response handling.
+
+```python
+resp = client.chat.completions.create(
+    model="deepseek-v3.2",
+    messages=[{"role": "user", "content": "hi"}],
+    tools=[...],
+    tool_choice="auto",
+    temperature=0.7,
+)
+print(resp.choices[0].message.content)
+print(resp.choices[0].message.tool_calls)        # nested attribute access
+print(resp.choices[0].finish_reason)             # "stop" | "tool_calls" | "length"
+print(resp.usage.prompt_tokens, resp.usage.total_tokens)
+print(resp.cost_usd, resp.provider_used)         # HUBLE bookkeeping extras
+```
+
+The shape unwrapper is also exported as a pure helper for callers that
+hit the API by hand:
+
+```python
+from llmhub import huble_to_openai_chat_completion
+openai_shape = huble_to_openai_chat_completion(raw_dict_from_huble)
+```
+
+## Other operations
+
+```python
 client.text.generate(prompt="...")
-
-# Translate text
 client.text.translate(text="...", target_language="es")
-
-# Summarize text
 client.text.summarize(text="...")
-
-# Analyze text
-client.text.analyze(text="...")
-
-# And more: rewrite, expand, condense, classify, extract, compare
-```
-
-### Document Operations
-
-```python
-# Parse document
+client.embeddings.generate(texts=["...", "..."])
 client.document.parse(document="...")
-
-# Extract data
-client.document.extract(document="...", extract_fields=["invoice_number", "total"])
-
-# Classify document
-client.document.classify(document="...")
-
-# And more: structure, compare, generate
+client.document.extract(document="...", extract_fields=["invoice_number"])
+client.audio.transcribe(audio="...")
+client.image.generate(prompt="...")
+client.moderation.analyze(content="...")
+client.prompts.create(name="...", template="...")
+client.discovery.get_models(provider="melious")
 ```
 
-### Embeddings
+## Provider override
+
+Every operation accepts `provider` and `model` overrides:
 
 ```python
-# Generate embeddings
-embeddings = client.embeddings.generate(
-    texts=["Hello world", "Machine learning"],
-    model="voyage-2"  # Optional model override
-)
-```
-
-### Discovery
-
-```python
-# Get available providers
-catalog = client.discovery.get_catalog()
-
-# Get available models
-models = client.discovery.get_models(provider="claude")
-
-# Get all providers
-providers = client.discovery.get_providers()
-```
-
-### Provider Override
-
-You can override the default provider for any request:
-
-```python
-# Use specific provider
-response = client.text.generate(
-    prompt="Hello",
-    provider="claude",
-    model="claude-3-5-sonnet-20241022"
-)
+client.text.generate(prompt="hi", provider="claude", model="claude-haiku-4-5")
+client.agent.chat(messages=[...], provider="openai", model="gpt-4o-mini")
 ```
 
 ## Configuration
 
-### Environment Variables
+### Environment variables
 
 ```bash
-export LLMHUB_API_KEY="your-api-key"
-export LLMHUB_BASE_URL="https://your-instance.com"  # Optional
+export LLMHUB_API_KEY="mgw_..."
+export LLMHUB_BASE_URL="https://api.huble.app"   # default: http://localhost:4000
 ```
 
-### In Code
+### In code
 
 ```python
-from llmhub import LLMHub
-
-client = LLMHub(
-    api_key="your-api-key",
-    base_url="https://your-instance.com"  # Optional, defaults to standard endpoint
-)
+client = LLMHub(api_key="...", base_url="...")
 ```
 
-## Development
+Precedence: explicit args > `LLMHUB_*` env vars > defaults.
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for local development setup.
+## Error handling
 
-## Contributing
+```python
+from llmhub import (
+    LLMHub, AuthenticationError, RateLimitError,
+    NotFoundError, ValidationError, ServerError, LLMHubError,
+)
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+try:
+    client.agent.chat(messages=[{"role": "user", "content": "hi"}])
+except RateLimitError as e:
+    sleep(e.retry_after or 30)
+except AuthenticationError:
+    ...
+except LLMHubError:
+    ...
+```
+
+| Status   | Exception              |
+|----------|------------------------|
+| 401, 403 | `AuthenticationError`  |
+| 404      | `NotFoundError`        |
+| 422, 4xx | `ValidationError`      |
+| 429      | `RateLimitError(retry_after=…)` |
+| 5xx      | `ServerError`          |
+| network  | `LLMHubError`          |
+
+## Migration: replacing raw `requests` with the SDK
+
+See [`examples/odoo_addon_migration.py`](examples/odoo_addon_migration.py)
+for a side-by-side BEFORE / AFTER showing how to replace ~80 lines of raw
+`requests.post(...)` + manual response unwrapping with three SDK calls.
 
 ## Requirements
 
-- Python 3.9 or higher
-- Valid LLMHub API key
+- Python 3.9+
+- HUBLE API key (V2 — `X-API-Key`)
+
+## Development
+
+See [DEVELOPMENT.md](DEVELOPMENT.md). Run tests with `pytest tests/`.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT — see [LICENSE](LICENSE).
 
 ## Links
 
-- **Main Project**: [LLMHub](https://github.com/wapsol/llmhub)
-- **SDK Development Tracker**: [Issue #63](https://github.com/wapsol/llmhub/issues/63)
-- **Documentation**: Coming soon
-- **PyPI Package**: Coming soon
-
-## Roadmap
-
-- [x] Repository setup
-- [x] OpenAPI spec integration
-- [ ] Base client generation with OpenAPI Generator
-- [ ] Hand-crafted convenience wrapper
-- [ ] Custom exception hierarchy
-- [ ] Comprehensive test suite
-- [ ] Sphinx documentation
-- [ ] PyPI publication (v1.0.0)
-
-**Target Release**: Week 4 of SDK development initiative
-
----
-
-Generated as part of the LLMHub multi-language SDK initiative.
+- **HUBLE backend**: <https://github.com/HUBLE-AI/llmhub>
+- **This SDK**: <https://github.com/HUBLE-AI/huble-sdk-python>

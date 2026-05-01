@@ -4,17 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "llmhub"
-version = "1.0.0"
-description = "Official Python SDK for LLMHub - Unified access to 18+ AI providers"
+version = "0.2.0"
+description = "Official Python SDK for HUBLE (LLMHub) - unified access to 18+ AI providers including Melious, Claude, OpenAI, with tool-use and OpenAI SDK drop-in"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
-    {name = "LLMHub Team", email = "team@llmhub.com"}
+    {name = "HUBLE Team", email = "team@huble.app"}
 ]
-keywords = ["llm", "ai", "sdk", "openai", "anthropic", "claude", "multi-provider"]
+keywords = ["llm", "ai", "sdk", "openai", "anthropic", "claude", "melious", "multi-provider", "agent", "tool-use", "huble", "llmhub"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -42,10 +42,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/wapsol/llmhub-sdk-python"
-Documentation = "https://github.com/wapsol/llmhub-sdk-python#readme"
-Repository = "https://github.com/wapsol/llmhub-sdk-python"
-Issues = "https://github.com/wapsol/llmhub-sdk-python/issues"
+Homepage = "https://github.com/HUBLE-AI/huble-sdk-python"
+Documentation = "https://github.com/HUBLE-AI/huble-sdk-python#readme"
+Repository = "https://github.com/HUBLE-AI/huble-sdk-python"
+Issues = "https://github.com/HUBLE-AI/huble-sdk-python/issues"
 
 [tool.setuptools]
 packages = ["llmhub", "llmhub_generated"]
