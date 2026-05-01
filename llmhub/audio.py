@@ -1,9 +1,6 @@
 """Audio operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_audio_operations_api import V2AudioOperationsApi
 from llmhub_generated.models.v2_base_response import V2BaseResponse

@@ -1,9 +1,6 @@
 """Embeddings operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import List, Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_embeddings_api import V2EmbeddingsApi
 from llmhub_generated.models.v2_embeddings_request import V2EmbeddingsRequest

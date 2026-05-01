@@ -1,9 +1,6 @@
 """Discovery operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_discovery_api import V2DiscoveryApi
 from llmhub_generated.exceptions import ApiException

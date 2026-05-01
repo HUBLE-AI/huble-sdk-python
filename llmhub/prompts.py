@@ -1,9 +1,6 @@
 """Prompt library operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional, Dict, Any
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_prompt_library_api import V2PromptLibraryApi
 from llmhub_generated.models.v2_base_response import V2BaseResponse

@@ -1,9 +1,6 @@
 """Text operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional, List
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_text_operations_api import V2TextOperationsApi
 from llmhub_generated.models.v2_text_generate_request import V2TextGenerateRequest

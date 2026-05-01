@@ -1,9 +1,6 @@
 """Document operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import List, Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_document_operations_api import V2DocumentOperationsApi
 from llmhub_generated.models.v2_document_parse_request import V2DocumentParseRequest

@@ -1,9 +1,6 @@
 """Moderation operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional, List
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_moderation_api import V2ModerationApi
 from llmhub_generated.models.v2_base_response import V2BaseResponse

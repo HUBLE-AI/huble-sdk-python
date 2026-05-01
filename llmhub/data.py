@@ -1,9 +1,6 @@
 """Data operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import List, Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_data_operations_api import V2DataOperationsApi
 from llmhub_generated.models.v2_data_embed_request import V2DataEmbedRequest

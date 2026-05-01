@@ -1,9 +1,6 @@
 """Video operations wrapper for LLMHub SDK."""
 
-import sys
 from typing import Optional
-
-sys.path.insert(0, 'generated')
 
 from llmhub_generated.api.v2_video_operations_api import V2VideoOperationsApi
 from llmhub_generated.models.v2_video_generate_request import V2VideoGenerateRequest
