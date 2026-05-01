@@ -12,8 +12,8 @@ without touching their code.
 
 ## Status
 
-**Alpha (`0.2.0`)** — adoption-ready for Python integrators including the
-internal NOCA Odoo addon collection. PyPI publication pending review.
+**Alpha (`0.2.0`)** — adoption-ready for Python integrators (scripts,
+web services, Odoo addons). PyPI publication pending review.
 
 ## Installation
 
@@ -190,6 +190,12 @@ except LLMHubError:
 See [`examples/odoo_addon_migration.py`](examples/odoo_addon_migration.py)
 for a side-by-side BEFORE / AFTER showing how to replace ~80 lines of raw
 `requests.post(...)` + manual response unwrapping with three SDK calls.
+
+## Integrating into your app
+
+For copy-paste recipes per app shell — script/cron, FastAPI, Django,
+Odoo addon — plus mocking and retry guidance, see
+[INTEGRATION.md](INTEGRATION.md).
 
 ## Requirements
 
