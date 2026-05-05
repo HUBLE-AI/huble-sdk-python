@@ -40,7 +40,7 @@ class TestEnrichCompany:
         """Test successful company enrichment."""
         with patch.object(
             enrichment_ops._api,
-            'enrich_company_api_v2_enrich_company_post',
+            'enrich_company_api_v2_enrichment_company_post',
             return_value=mock_response
         ):
             response = enrichment_ops.enrich_company(
@@ -53,7 +53,7 @@ class TestEnrichCompany:
         """Test company enrichment with provider."""
         with patch.object(
             enrichment_ops._api,
-            'enrich_company_api_v2_enrich_company_post',
+            'enrich_company_api_v2_enrichment_company_post',
             return_value=mock_response
         ):
             response = enrichment_ops.enrich_company(
@@ -70,7 +70,7 @@ class TestEnrichLead:
         """Test lead enrichment with email."""
         with patch.object(
             enrichment_ops._api,
-            'enrich_lead_api_v2_enrich_lead_post',
+            'enrich_lead_api_v2_enrichment_lead_post',
             return_value=mock_response
         ):
             response = enrichment_ops.enrich_lead(
@@ -82,7 +82,7 @@ class TestEnrichLead:
         """Test lead enrichment with name and domain."""
         with patch.object(
             enrichment_ops._api,
-            'enrich_lead_api_v2_enrich_lead_post',
+            'enrich_lead_api_v2_enrichment_lead_post',
             return_value=mock_response
         ):
             response = enrichment_ops.enrich_lead(
@@ -100,7 +100,7 @@ class TestFindEmail:
         """Test successful email finding."""
         with patch.object(
             enrichment_ops._api,
-            'find_email_api_v2_enrich_email_finder_post',
+            'find_email_api_v2_enrichment_email_finder_post',
             return_value=mock_response
         ):
             response = enrichment_ops.find_email(
@@ -115,7 +115,7 @@ class TestFindEmail:
         """Test email finding with provider."""
         with patch.object(
             enrichment_ops._api,
-            'find_email_api_v2_enrich_email_finder_post',
+            'find_email_api_v2_enrichment_email_finder_post',
             return_value=mock_response
         ):
             response = enrichment_ops.find_email(
@@ -134,7 +134,7 @@ class TestVerifyEmail:
         """Test successful email verification."""
         with patch.object(
             enrichment_ops._api,
-            'verify_email_api_v2_enrich_email_verify_post',
+            'verify_email_api_v2_enrichment_email_verify_post',
             return_value=mock_response
         ):
             response = enrichment_ops.verify_email(
@@ -147,7 +147,7 @@ class TestVerifyEmail:
         """Test email verification with provider."""
         with patch.object(
             enrichment_ops._api,
-            'verify_email_api_v2_enrich_email_verify_post',
+            'verify_email_api_v2_enrichment_email_verify_post',
             return_value=mock_response
         ):
             response = enrichment_ops.verify_email(
@@ -168,7 +168,7 @@ class TestSearchDomainEmails:
         ]
         with patch.object(
             enrichment_ops._api,
-            'search_domain_emails_api_v2_enrich_domain_search_post',
+            'search_domain_emails_api_v2_enrichment_domain_search_post',
             return_value=mock_response
         ):
             response = enrichment_ops.search_domain_emails(
@@ -182,7 +182,7 @@ class TestSearchDomainEmails:
         """Test domain email search with filters."""
         with patch.object(
             enrichment_ops._api,
-            'search_domain_emails_api_v2_enrich_domain_search_post',
+            'search_domain_emails_api_v2_enrichment_domain_search_post',
             return_value=mock_response
         ):
             response = enrichment_ops.search_domain_emails(
@@ -206,7 +206,7 @@ class TestDiscoverCompanies:
         ]
         with patch.object(
             enrichment_ops._api,
-            'discover_companies_api_v2_enrich_discover_post',
+            'discover_companies_api_v2_enrichment_discover_post',
             return_value=mock_response
         ):
             response = enrichment_ops.discover_companies(
@@ -219,7 +219,7 @@ class TestDiscoverCompanies:
         """Test company discovery with limit."""
         with patch.object(
             enrichment_ops._api,
-            'discover_companies_api_v2_enrich_discover_post',
+            'discover_companies_api_v2_enrichment_discover_post',
             return_value=mock_response
         ):
             response = enrichment_ops.discover_companies(
@@ -236,7 +236,7 @@ class TestCombinedEnrichment:
         """Test successful combined enrichment."""
         with patch.object(
             enrichment_ops._api,
-            'combined_enrichment_api_v2_enrich_combined_post',
+            'combined_enrichment_api_v2_enrichment_combined_post',
             return_value=mock_response
         ):
             response = enrichment_ops.combined_enrichment(
@@ -249,7 +249,7 @@ class TestCombinedEnrichment:
         """Test combined enrichment with selective flags."""
         with patch.object(
             enrichment_ops._api,
-            'combined_enrichment_api_v2_enrich_combined_post',
+            'combined_enrichment_api_v2_enrichment_combined_post',
             return_value=mock_response
         ):
             response = enrichment_ops.combined_enrichment(
@@ -268,7 +268,7 @@ class TestCreateLead:
         mock_response.lead_id = "lead_12345"
         with patch.object(
             enrichment_ops._api,
-            'create_lead_api_v2_enrich_leads_post',
+            'create_lead_api_v2_enrichment_leads_post',
             return_value=mock_response
         ):
             response = enrichment_ops.create_lead(
@@ -283,7 +283,7 @@ class TestCreateLead:
         """Test lead creation with metadata."""
         with patch.object(
             enrichment_ops._api,
-            'create_lead_api_v2_enrich_leads_post',
+            'create_lead_api_v2_enrichment_leads_post',
             return_value=mock_response
         ):
             response = enrichment_ops.create_lead(
@@ -302,7 +302,7 @@ class TestGetLead:
         """Test successful lead retrieval."""
         with patch.object(
             enrichment_ops._api,
-            'get_lead_api_v2_enrich_leads_lead_id_get',
+            'get_lead_api_v2_enrichment_leads_lead_id_get',
             return_value=mock_response
         ):
             response = enrichment_ops.get_lead(
@@ -322,7 +322,7 @@ class TestListLeads:
         ]
         with patch.object(
             enrichment_ops._api,
-            'list_leads_api_v2_enrich_leads_get',
+            'list_leads_api_v2_enrichment_leads_get',
             return_value=mock_response
         ):
             response = enrichment_ops.list_leads()
@@ -333,7 +333,7 @@ class TestListLeads:
         """Test leads listing with filters."""
         with patch.object(
             enrichment_ops._api,
-            'list_leads_api_v2_enrich_leads_get',
+            'list_leads_api_v2_enrichment_leads_get',
             return_value=mock_response
         ):
             response = enrichment_ops.list_leads(
@@ -352,7 +352,7 @@ class TestUpdateLead:
         """Test successful lead update."""
         with patch.object(
             enrichment_ops._api,
-            'update_lead_api_v2_enrich_leads_lead_id_put',
+            'update_lead_api_v2_enrichment_leads_lead_id_put',
             return_value=mock_response
         ):
             response = enrichment_ops.update_lead(
@@ -365,7 +365,7 @@ class TestUpdateLead:
         """Test lead update with multiple fields."""
         with patch.object(
             enrichment_ops._api,
-            'update_lead_api_v2_enrich_leads_lead_id_put',
+            'update_lead_api_v2_enrichment_leads_lead_id_put',
             return_value=mock_response
         ):
             response = enrichment_ops.update_lead(
@@ -384,7 +384,7 @@ class TestDeleteLead:
         """Test successful lead deletion."""
         with patch.object(
             enrichment_ops._api,
-            'delete_lead_api_v2_enrich_leads_lead_id_delete',
+            'delete_lead_api_v2_enrichment_leads_lead_id_delete',
             return_value=mock_response
         ):
             response = enrichment_ops.delete_lead(
@@ -401,7 +401,7 @@ class TestEnrichmentErrorHandling:
         api_exception = ApiException(status=401, reason="Unauthorized")
         with patch.object(
             enrichment_ops._api,
-            'enrich_company_api_v2_enrich_company_post',
+            'enrich_company_api_v2_enrichment_company_post',
             side_effect=api_exception
         ):
             with pytest.raises(AuthenticationError):
@@ -412,7 +412,7 @@ class TestEnrichmentErrorHandling:
         api_exception = ApiException(status=404, reason="Not found")
         with patch.object(
             enrichment_ops._api,
-            'get_lead_api_v2_enrich_leads_lead_id_get',
+            'get_lead_api_v2_enrichment_leads_lead_id_get',
             side_effect=api_exception
         ):
             with pytest.raises(NotFoundError):
@@ -423,7 +423,7 @@ class TestEnrichmentErrorHandling:
         api_exception = ApiException(status=422, reason="Validation failed")
         with patch.object(
             enrichment_ops._api,
-            'verify_email_api_v2_enrich_email_verify_post',
+            'verify_email_api_v2_enrichment_email_verify_post',
             side_effect=api_exception
         ):
             with pytest.raises(ValidationError):
@@ -435,7 +435,7 @@ class TestEnrichmentErrorHandling:
         api_exception.headers = {'Retry-After': '180'}
         with patch.object(
             enrichment_ops._api,
-            'find_email_api_v2_enrich_email_finder_post',
+            'find_email_api_v2_enrichment_email_finder_post',
             side_effect=api_exception
         ):
             with pytest.raises(RateLimitError) as exc_info:
@@ -451,7 +451,7 @@ class TestEnrichmentErrorHandling:
         api_exception = ApiException(status=500, reason="Internal server error")
         with patch.object(
             enrichment_ops._api,
-            'create_lead_api_v2_enrich_leads_post',
+            'create_lead_api_v2_enrichment_leads_post',
             side_effect=api_exception
         ):
             with pytest.raises(ServerError):

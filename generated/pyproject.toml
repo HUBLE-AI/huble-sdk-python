@@ -1,6 +1,6 @@
 [project]
 name = "llmhub_generated"
-version = "1.0.0"
+version = "1.2.0"
 description = "huble"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

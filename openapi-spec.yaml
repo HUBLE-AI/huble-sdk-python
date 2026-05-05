@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: huble
   description: Application-agnostic LLM service with multi-provider support and billing tracking
-  version: 1.2.0
+  version: 1.5.0
 paths:
   /health/:
     get:
@@ -104,7 +104,12 @@ paths:
       tags:
       - Public Website
       summary: Get Models Public
-      description: PUBLIC - Get list of all available models.
+      description: 'PUBLIC - Get list of all available models.
+
+
+        Returns rich payload (capabilities, pricing, context window, knowledge cutoff)
+
+        so the catalog page can render filterable cards in a single fetch.'
       operationId: get_models_public_api_public_models_get
       responses:
         '200':
@@ -8471,6 +8476,91 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v2/prompts/search:
+    get:
+      tags:
+      - v2 - Prompt Library
+      summary: Search Templates
+      description: 'Search prompt templates by keyword and filters.
+
+
+        Visibility: searches across the caller''s own templates plus public ones.
+
+        Match is a case-insensitive substring across `template_name` and `description`.'
+      operationId: search_templates_api_v2_prompts_search_get
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: Keyword to match in template_name and description
+          title: Q
+        description: Keyword to match in template_name and description
+      - name: template_type
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by template type
+          title: Template Type
+        description: Filter by template type
+      - name: is_public
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          description: Filter by public status
+          title: Is Public
+        description: Filter by public status
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 200
+          minimum: 1
+          description: Max rows to return
+          default: 50
+          title: Limit
+        description: Max rows to return
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          description: Offset for pagination
+          default: 0
+          title: Offset
+        description: Offset for pagination
+      - name: X-API-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          title: X-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromptTemplateResponse'
+                title: Response Search Templates Api V2 Prompts Search Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v2/prompts/{template_id}:
     get:
       tags:
@@ -8665,7 +8755,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/discover:
+  /api/v2/enrichment/discover:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -8683,7 +8773,7 @@ paths:
         - "European fintech startups founded after 2020"
 
         - "Healthcare companies in California"'
-      operationId: discover_companies_api_v2_enrich_discover_post
+      operationId: discover_companies_api_v2_enrichment_discover_post
       parameters:
       - name: X-API-Key
         in: header
@@ -8710,7 +8800,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/domain-search:
+  /api/v2/enrichment/domain-search:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -8731,7 +8821,7 @@ paths:
 
 
         **Returns:** Email list with confidence scores, positions, LinkedIn profiles'
-      operationId: search_domain_emails_api_v2_enrich_domain_search_post
+      operationId: search_domain_emails_api_v2_enrichment_domain_search_post
       parameters:
       - name: X-API-Key
         in: header
@@ -8758,7 +8848,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/email-finder:
+  /api/v2/enrichment/email-finder:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -8775,7 +8865,7 @@ paths:
 
 
         **Returns:** Email with confidence score, position, social profiles'
-      operationId: find_email_api_v2_enrich_email_finder_post
+      operationId: find_email_api_v2_enrichment_email_finder_post
       parameters:
       - name: X-API-Key
         in: header
@@ -8802,7 +8892,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/email-verify:
+  /api/v2/enrichment/email-verify:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -8829,7 +8919,7 @@ paths:
 
 
         **Returns:** Status (valid/invalid/risky/unknown) + confidence score (0-100)'
-      operationId: verify_email_api_v2_enrich_email_verify_post
+      operationId: verify_email_api_v2_enrichment_email_verify_post
       parameters:
       - name: X-API-Key
         in: header
@@ -8856,7 +8946,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/leads:
+  /api/v2/enrichment/leads:
     get:
       tags:
       - v2 - B2B Enrichment
@@ -8865,7 +8955,7 @@ paths:
 
 
         **Use case:** Retrieve and sync leads stored in Hunter.io'
-      operationId: list_leads_api_v2_enrich_leads_get
+      operationId: list_leads_api_v2_enrichment_leads_get
       parameters:
       - name: offset
         in: query
@@ -8908,7 +8998,7 @@ paths:
 
 
         **Use case:** Store discovered leads for future enrichment and tracking'
-      operationId: create_lead_api_v2_enrich_leads_post
+      operationId: create_lead_api_v2_enrichment_leads_post
       parameters:
       - name: X-API-Key
         in: header
@@ -8935,13 +9025,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/leads/{lead_id}:
+  /api/v2/enrichment/leads/{lead_id}:
     get:
       tags:
       - v2 - B2B Enrichment
       summary: Get Lead
       description: Get specific lead by ID
-      operationId: get_lead_api_v2_enrich_leads__lead_id__get
+      operationId: get_lead_api_v2_enrichment_leads__lead_id__get
       parameters:
       - name: lead_id
         in: path
@@ -8973,7 +9063,7 @@ paths:
       - v2 - B2B Enrichment
       summary: Update Lead
       description: Update existing lead in Hunter.io
-      operationId: update_lead_api_v2_enrich_leads__lead_id__put
+      operationId: update_lead_api_v2_enrichment_leads__lead_id__put
       parameters:
       - name: lead_id
         in: path
@@ -9011,7 +9101,7 @@ paths:
       - v2 - B2B Enrichment
       summary: Delete Lead
       description: Delete lead from Hunter.io
-      operationId: delete_lead_api_v2_enrich_leads__lead_id__delete
+      operationId: delete_lead_api_v2_enrichment_leads__lead_id__delete
       parameters:
       - name: lead_id
         in: path
@@ -9038,7 +9128,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/lead:
+  /api/v2/enrichment/lead:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -9063,7 +9153,7 @@ paths:
 
 
         **Input:** Email OR LinkedIn handle'
-      operationId: enrich_lead_api_v2_enrich_lead_post
+      operationId: enrich_lead_api_v2_enrichment_lead_post
       parameters:
       - name: X-API-Key
         in: header
@@ -9090,7 +9180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/company:
+  /api/v2/enrichment/company:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -9121,7 +9211,7 @@ paths:
 
 
         **Input:** Company domain'
-      operationId: enrich_company_api_v2_enrich_company_post
+      operationId: enrich_company_api_v2_enrichment_company_post
       parameters:
       - name: X-API-Key
         in: header
@@ -9148,7 +9238,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /api/v2/enrich/combined:
+  /api/v2/enrichment/combined:
     post:
       tags:
       - v2 - B2B Enrichment
@@ -9173,7 +9263,7 @@ paths:
 
 
         **Perfect for:** LLM-powered sales automation where you need maximum context'
-      operationId: combined_enrichment_api_v2_enrich_combined_post
+      operationId: combined_enrichment_api_v2_enrichment_combined_post
       parameters:
       - name: X-API-Key
         in: header

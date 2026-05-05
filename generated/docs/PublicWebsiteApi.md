@@ -355,6 +355,9 @@ Get Models Public
 
 PUBLIC - Get list of all available models.
 
+Returns rich payload (capabilities, pricing, context window, knowledge cutoff)
+so the catalog page can render filterable cards in a single fetch.
+
 ### Example
 
 

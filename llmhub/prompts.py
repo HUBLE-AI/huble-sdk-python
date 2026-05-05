@@ -160,6 +160,50 @@ class PromptOperations:
         except ApiException as e:
             raise convert_api_exception(e)
 
+    def search_templates(
+        self,
+        q: str,
+        template_type: Optional[str] = None,
+        is_public: Optional[bool] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ):
+        """
+        Search prompt templates by keyword.
+
+        Searches across the caller's own templates plus public ones.
+        Match is a case-insensitive substring across template_name
+        and description.
+
+        Args:
+            q: Keyword (>= 1 char) to match in template_name / description.
+            template_type: Filter by template type.
+            is_public: Filter by public/private status.
+            limit: Max rows to return (1-200, server default 50).
+            offset: Pagination offset (>= 0, server default 0).
+
+        Returns:
+            List of PromptTemplateResponse objects.
+
+        Example:
+            >>> hits = client.prompts.search_templates(
+            ...     q="onboarding", template_type="email", limit=10,
+            ... )
+            >>> for t in hits:
+            ...     print(t.template_name, t.description)
+        """
+        try:
+            return self._api.search_templates_api_v2_prompts_search_get(
+                q=q,
+                x_api_key=self._api_key,
+                template_type=template_type,
+                is_public=is_public,
+                limit=limit,
+                offset=offset,
+            )
+        except ApiException as e:
+            raise convert_api_exception(e)
+
     def update_template(
         self,
         template_id: str,

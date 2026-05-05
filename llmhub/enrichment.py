@@ -60,7 +60,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.enrich_company_api_v2_enrich_company_post(
+            return self._api.enrich_company_api_v2_enrichment_company_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -107,7 +107,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.enrich_lead_api_v2_enrich_lead_post(
+            return self._api.enrich_lead_api_v2_enrichment_lead_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -150,7 +150,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.find_email_api_v2_enrich_email_finder_post(
+            return self._api.find_email_api_v2_enrichment_email_finder_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -183,7 +183,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.verify_email_api_v2_enrich_email_verify_post(
+            return self._api.verify_email_api_v2_enrichment_email_verify_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -235,7 +235,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.search_domain_emails_api_v2_enrich_domain_search_post(
+            return self._api.search_domain_emails_api_v2_enrichment_domain_search_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -274,7 +274,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.discover_companies_api_v2_enrich_discover_post(
+            return self._api.discover_companies_api_v2_enrichment_discover_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -330,7 +330,7 @@ class EnrichmentOperations:
             if provider:
                 request_data["provider"] = provider
 
-            return self._api.combined_enrichment_api_v2_enrich_combined_post(
+            return self._api.combined_enrichment_api_v2_enrichment_combined_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -383,7 +383,7 @@ class EnrichmentOperations:
             if metadata:
                 request_data["metadata"] = metadata
 
-            return self._api.create_lead_api_v2_enrich_leads_post(
+            return self._api.create_lead_api_v2_enrichment_leads_post(
                 x_api_key=self._api_key,
                 body=request_data
             )
@@ -410,7 +410,7 @@ class EnrichmentOperations:
             >>> print(f"{response.first_name} {response.last_name} - {response.email}")
         """
         try:
-            return self._api.get_lead_api_v2_enrich_leads_lead_id_get(
+            return self._api.get_lead_api_v2_enrichment_leads_lead_id_get(
                 x_api_key=self._api_key,
                 lead_id=lead_id
             )
@@ -455,7 +455,7 @@ class EnrichmentOperations:
             if status:
                 params["status"] = status
 
-            return self._api.list_leads_api_v2_enrich_leads_get(
+            return self._api.list_leads_api_v2_enrichment_leads_get(
                 x_api_key=self._api_key,
                 **params
             )
@@ -513,7 +513,7 @@ class EnrichmentOperations:
             if metadata:
                 request_data["metadata"] = metadata
 
-            return self._api.update_lead_api_v2_enrich_leads_lead_id_put(
+            return self._api.update_lead_api_v2_enrichment_leads_lead_id_put(
                 x_api_key=self._api_key,
                 lead_id=lead_id,
                 body=request_data
@@ -541,7 +541,7 @@ class EnrichmentOperations:
             >>> print(f"Lead deleted: {response.success}")
         """
         try:
-            return self._api.delete_lead_api_v2_enrich_leads_lead_id_delete(
+            return self._api.delete_lead_api_v2_enrichment_leads_lead_id_delete(
                 x_api_key=self._api_key,
                 lead_id=lead_id
             )

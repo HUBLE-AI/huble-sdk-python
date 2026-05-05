@@ -4,22 +4,22 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**combined_enrichment_api_v2_enrich_combined_post**](V2B2BEnrichmentApi.md#combined_enrichment_api_v2_enrich_combined_post) | **POST** /api/v2/enrich/combined | Combined Enrichment
-[**create_lead_api_v2_enrich_leads_post**](V2B2BEnrichmentApi.md#create_lead_api_v2_enrich_leads_post) | **POST** /api/v2/enrich/leads | Create Lead
-[**delete_lead_api_v2_enrich_leads_lead_id_delete**](V2B2BEnrichmentApi.md#delete_lead_api_v2_enrich_leads_lead_id_delete) | **DELETE** /api/v2/enrich/leads/{lead_id} | Delete Lead
-[**discover_companies_api_v2_enrich_discover_post**](V2B2BEnrichmentApi.md#discover_companies_api_v2_enrich_discover_post) | **POST** /api/v2/enrich/discover | Discover Companies
-[**enrich_company_api_v2_enrich_company_post**](V2B2BEnrichmentApi.md#enrich_company_api_v2_enrich_company_post) | **POST** /api/v2/enrich/company | Enrich Company
-[**enrich_lead_api_v2_enrich_lead_post**](V2B2BEnrichmentApi.md#enrich_lead_api_v2_enrich_lead_post) | **POST** /api/v2/enrich/lead | Enrich Lead
-[**find_email_api_v2_enrich_email_finder_post**](V2B2BEnrichmentApi.md#find_email_api_v2_enrich_email_finder_post) | **POST** /api/v2/enrich/email-finder | Find Email
-[**get_lead_api_v2_enrich_leads_lead_id_get**](V2B2BEnrichmentApi.md#get_lead_api_v2_enrich_leads_lead_id_get) | **GET** /api/v2/enrich/leads/{lead_id} | Get Lead
-[**list_leads_api_v2_enrich_leads_get**](V2B2BEnrichmentApi.md#list_leads_api_v2_enrich_leads_get) | **GET** /api/v2/enrich/leads | List Leads
-[**search_domain_emails_api_v2_enrich_domain_search_post**](V2B2BEnrichmentApi.md#search_domain_emails_api_v2_enrich_domain_search_post) | **POST** /api/v2/enrich/domain-search | Search Domain Emails
-[**update_lead_api_v2_enrich_leads_lead_id_put**](V2B2BEnrichmentApi.md#update_lead_api_v2_enrich_leads_lead_id_put) | **PUT** /api/v2/enrich/leads/{lead_id} | Update Lead
-[**verify_email_api_v2_enrich_email_verify_post**](V2B2BEnrichmentApi.md#verify_email_api_v2_enrich_email_verify_post) | **POST** /api/v2/enrich/email-verify | Verify Email
+[**combined_enrichment_api_v2_enrichment_combined_post**](V2B2BEnrichmentApi.md#combined_enrichment_api_v2_enrichment_combined_post) | **POST** /api/v2/enrichment/combined | Combined Enrichment
+[**create_lead_api_v2_enrichment_leads_post**](V2B2BEnrichmentApi.md#create_lead_api_v2_enrichment_leads_post) | **POST** /api/v2/enrichment/leads | Create Lead
+[**delete_lead_api_v2_enrichment_leads_lead_id_delete**](V2B2BEnrichmentApi.md#delete_lead_api_v2_enrichment_leads_lead_id_delete) | **DELETE** /api/v2/enrichment/leads/{lead_id} | Delete Lead
+[**discover_companies_api_v2_enrichment_discover_post**](V2B2BEnrichmentApi.md#discover_companies_api_v2_enrichment_discover_post) | **POST** /api/v2/enrichment/discover | Discover Companies
+[**enrich_company_api_v2_enrichment_company_post**](V2B2BEnrichmentApi.md#enrich_company_api_v2_enrichment_company_post) | **POST** /api/v2/enrichment/company | Enrich Company
+[**enrich_lead_api_v2_enrichment_lead_post**](V2B2BEnrichmentApi.md#enrich_lead_api_v2_enrichment_lead_post) | **POST** /api/v2/enrichment/lead | Enrich Lead
+[**find_email_api_v2_enrichment_email_finder_post**](V2B2BEnrichmentApi.md#find_email_api_v2_enrichment_email_finder_post) | **POST** /api/v2/enrichment/email-finder | Find Email
+[**get_lead_api_v2_enrichment_leads_lead_id_get**](V2B2BEnrichmentApi.md#get_lead_api_v2_enrichment_leads_lead_id_get) | **GET** /api/v2/enrichment/leads/{lead_id} | Get Lead
+[**list_leads_api_v2_enrichment_leads_get**](V2B2BEnrichmentApi.md#list_leads_api_v2_enrichment_leads_get) | **GET** /api/v2/enrichment/leads | List Leads
+[**search_domain_emails_api_v2_enrichment_domain_search_post**](V2B2BEnrichmentApi.md#search_domain_emails_api_v2_enrichment_domain_search_post) | **POST** /api/v2/enrichment/domain-search | Search Domain Emails
+[**update_lead_api_v2_enrichment_leads_lead_id_put**](V2B2BEnrichmentApi.md#update_lead_api_v2_enrichment_leads_lead_id_put) | **PUT** /api/v2/enrichment/leads/{lead_id} | Update Lead
+[**verify_email_api_v2_enrichment_email_verify_post**](V2B2BEnrichmentApi.md#verify_email_api_v2_enrichment_email_verify_post) | **POST** /api/v2/enrichment/email-verify | Verify Email
 
 
-# **combined_enrichment_api_v2_enrich_combined_post**
-> V2EnrichmentResponse combined_enrichment_api_v2_enrich_combined_post(x_api_key, v2_combined_enrichment_request)
+# **combined_enrichment_api_v2_enrichment_combined_post**
+> V2EnrichmentResponse combined_enrichment_api_v2_enrichment_combined_post(x_api_key, v2_combined_enrichment_request)
 
 Combined Enrichment
 
@@ -63,11 +63,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Combined Enrichment
-        api_response = api_instance.combined_enrichment_api_v2_enrich_combined_post(x_api_key, v2_combined_enrichment_request)
-        print("The response of V2B2BEnrichmentApi->combined_enrichment_api_v2_enrich_combined_post:\n")
+        api_response = api_instance.combined_enrichment_api_v2_enrichment_combined_post(x_api_key, v2_combined_enrichment_request)
+        print("The response of V2B2BEnrichmentApi->combined_enrichment_api_v2_enrichment_combined_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->combined_enrichment_api_v2_enrich_combined_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->combined_enrichment_api_v2_enrichment_combined_post: %s\n" % e)
 ```
 
 
@@ -102,8 +102,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_lead_api_v2_enrich_leads_post**
-> V2EnrichmentResponse create_lead_api_v2_enrich_leads_post(x_api_key, v2_lead_create_request)
+# **create_lead_api_v2_enrichment_leads_post**
+> V2EnrichmentResponse create_lead_api_v2_enrichment_leads_post(x_api_key, v2_lead_create_request)
 
 Create Lead
 
@@ -137,11 +137,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Create Lead
-        api_response = api_instance.create_lead_api_v2_enrich_leads_post(x_api_key, v2_lead_create_request)
-        print("The response of V2B2BEnrichmentApi->create_lead_api_v2_enrich_leads_post:\n")
+        api_response = api_instance.create_lead_api_v2_enrichment_leads_post(x_api_key, v2_lead_create_request)
+        print("The response of V2B2BEnrichmentApi->create_lead_api_v2_enrichment_leads_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->create_lead_api_v2_enrich_leads_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->create_lead_api_v2_enrichment_leads_post: %s\n" % e)
 ```
 
 
@@ -176,8 +176,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_lead_api_v2_enrich_leads_lead_id_delete**
-> V2BaseResponse delete_lead_api_v2_enrich_leads_lead_id_delete(lead_id, x_api_key)
+# **delete_lead_api_v2_enrichment_leads_lead_id_delete**
+> V2BaseResponse delete_lead_api_v2_enrichment_leads_lead_id_delete(lead_id, x_api_key)
 
 Delete Lead
 
@@ -208,11 +208,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Delete Lead
-        api_response = api_instance.delete_lead_api_v2_enrich_leads_lead_id_delete(lead_id, x_api_key)
-        print("The response of V2B2BEnrichmentApi->delete_lead_api_v2_enrich_leads_lead_id_delete:\n")
+        api_response = api_instance.delete_lead_api_v2_enrichment_leads_lead_id_delete(lead_id, x_api_key)
+        print("The response of V2B2BEnrichmentApi->delete_lead_api_v2_enrichment_leads_lead_id_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->delete_lead_api_v2_enrich_leads_lead_id_delete: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->delete_lead_api_v2_enrichment_leads_lead_id_delete: %s\n" % e)
 ```
 
 
@@ -247,8 +247,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **discover_companies_api_v2_enrich_discover_post**
-> V2EnrichmentResponse discover_companies_api_v2_enrich_discover_post(x_api_key, v2_discover_request)
+# **discover_companies_api_v2_enrichment_discover_post**
+> V2EnrichmentResponse discover_companies_api_v2_enrichment_discover_post(x_api_key, v2_discover_request)
 
 Discover Companies
 
@@ -287,11 +287,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Discover Companies
-        api_response = api_instance.discover_companies_api_v2_enrich_discover_post(x_api_key, v2_discover_request)
-        print("The response of V2B2BEnrichmentApi->discover_companies_api_v2_enrich_discover_post:\n")
+        api_response = api_instance.discover_companies_api_v2_enrichment_discover_post(x_api_key, v2_discover_request)
+        print("The response of V2B2BEnrichmentApi->discover_companies_api_v2_enrichment_discover_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->discover_companies_api_v2_enrich_discover_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->discover_companies_api_v2_enrichment_discover_post: %s\n" % e)
 ```
 
 
@@ -326,8 +326,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **enrich_company_api_v2_enrich_company_post**
-> V2EnrichmentResponse enrich_company_api_v2_enrich_company_post(x_api_key, v2_company_enrichment_request)
+# **enrich_company_api_v2_enrichment_company_post**
+> V2EnrichmentResponse enrich_company_api_v2_enrichment_company_post(x_api_key, v2_company_enrichment_request)
 
 Enrich Company
 
@@ -373,11 +373,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Enrich Company
-        api_response = api_instance.enrich_company_api_v2_enrich_company_post(x_api_key, v2_company_enrichment_request)
-        print("The response of V2B2BEnrichmentApi->enrich_company_api_v2_enrich_company_post:\n")
+        api_response = api_instance.enrich_company_api_v2_enrichment_company_post(x_api_key, v2_company_enrichment_request)
+        print("The response of V2B2BEnrichmentApi->enrich_company_api_v2_enrichment_company_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->enrich_company_api_v2_enrich_company_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->enrich_company_api_v2_enrichment_company_post: %s\n" % e)
 ```
 
 
@@ -412,8 +412,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **enrich_lead_api_v2_enrich_lead_post**
-> V2EnrichmentResponse enrich_lead_api_v2_enrich_lead_post(x_api_key, v2_lead_enrichment_request)
+# **enrich_lead_api_v2_enrichment_lead_post**
+> V2EnrichmentResponse enrich_lead_api_v2_enrichment_lead_post(x_api_key, v2_lead_enrichment_request)
 
 Enrich Lead
 
@@ -456,11 +456,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Enrich Lead
-        api_response = api_instance.enrich_lead_api_v2_enrich_lead_post(x_api_key, v2_lead_enrichment_request)
-        print("The response of V2B2BEnrichmentApi->enrich_lead_api_v2_enrich_lead_post:\n")
+        api_response = api_instance.enrich_lead_api_v2_enrichment_lead_post(x_api_key, v2_lead_enrichment_request)
+        print("The response of V2B2BEnrichmentApi->enrich_lead_api_v2_enrichment_lead_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->enrich_lead_api_v2_enrich_lead_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->enrich_lead_api_v2_enrichment_lead_post: %s\n" % e)
 ```
 
 
@@ -495,8 +495,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **find_email_api_v2_enrich_email_finder_post**
-> V2EnrichmentResponse find_email_api_v2_enrich_email_finder_post(x_api_key, v2_email_finder_request)
+# **find_email_api_v2_enrichment_email_finder_post**
+> V2EnrichmentResponse find_email_api_v2_enrichment_email_finder_post(x_api_key, v2_email_finder_request)
 
 Find Email
 
@@ -535,11 +535,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Find Email
-        api_response = api_instance.find_email_api_v2_enrich_email_finder_post(x_api_key, v2_email_finder_request)
-        print("The response of V2B2BEnrichmentApi->find_email_api_v2_enrich_email_finder_post:\n")
+        api_response = api_instance.find_email_api_v2_enrichment_email_finder_post(x_api_key, v2_email_finder_request)
+        print("The response of V2B2BEnrichmentApi->find_email_api_v2_enrichment_email_finder_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->find_email_api_v2_enrich_email_finder_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->find_email_api_v2_enrichment_email_finder_post: %s\n" % e)
 ```
 
 
@@ -574,8 +574,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_lead_api_v2_enrich_leads_lead_id_get**
-> V2EnrichmentResponse get_lead_api_v2_enrich_leads_lead_id_get(lead_id, x_api_key)
+# **get_lead_api_v2_enrichment_leads_lead_id_get**
+> V2EnrichmentResponse get_lead_api_v2_enrichment_leads_lead_id_get(lead_id, x_api_key)
 
 Get Lead
 
@@ -606,11 +606,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Get Lead
-        api_response = api_instance.get_lead_api_v2_enrich_leads_lead_id_get(lead_id, x_api_key)
-        print("The response of V2B2BEnrichmentApi->get_lead_api_v2_enrich_leads_lead_id_get:\n")
+        api_response = api_instance.get_lead_api_v2_enrichment_leads_lead_id_get(lead_id, x_api_key)
+        print("The response of V2B2BEnrichmentApi->get_lead_api_v2_enrichment_leads_lead_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->get_lead_api_v2_enrich_leads_lead_id_get: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->get_lead_api_v2_enrichment_leads_lead_id_get: %s\n" % e)
 ```
 
 
@@ -645,8 +645,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_leads_api_v2_enrich_leads_get**
-> V2EnrichmentResponse list_leads_api_v2_enrich_leads_get(x_api_key, offset=offset, limit=limit)
+# **list_leads_api_v2_enrichment_leads_get**
+> V2EnrichmentResponse list_leads_api_v2_enrichment_leads_get(x_api_key, offset=offset, limit=limit)
 
 List Leads
 
@@ -680,11 +680,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # List Leads
-        api_response = api_instance.list_leads_api_v2_enrich_leads_get(x_api_key, offset=offset, limit=limit)
-        print("The response of V2B2BEnrichmentApi->list_leads_api_v2_enrich_leads_get:\n")
+        api_response = api_instance.list_leads_api_v2_enrichment_leads_get(x_api_key, offset=offset, limit=limit)
+        print("The response of V2B2BEnrichmentApi->list_leads_api_v2_enrichment_leads_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->list_leads_api_v2_enrich_leads_get: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->list_leads_api_v2_enrichment_leads_get: %s\n" % e)
 ```
 
 
@@ -720,8 +720,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **search_domain_emails_api_v2_enrich_domain_search_post**
-> V2EnrichmentResponse search_domain_emails_api_v2_enrich_domain_search_post(x_api_key, v2_domain_search_request)
+# **search_domain_emails_api_v2_enrichment_domain_search_post**
+> V2EnrichmentResponse search_domain_emails_api_v2_enrichment_domain_search_post(x_api_key, v2_domain_search_request)
 
 Search Domain Emails
 
@@ -762,11 +762,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Search Domain Emails
-        api_response = api_instance.search_domain_emails_api_v2_enrich_domain_search_post(x_api_key, v2_domain_search_request)
-        print("The response of V2B2BEnrichmentApi->search_domain_emails_api_v2_enrich_domain_search_post:\n")
+        api_response = api_instance.search_domain_emails_api_v2_enrichment_domain_search_post(x_api_key, v2_domain_search_request)
+        print("The response of V2B2BEnrichmentApi->search_domain_emails_api_v2_enrichment_domain_search_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->search_domain_emails_api_v2_enrich_domain_search_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->search_domain_emails_api_v2_enrichment_domain_search_post: %s\n" % e)
 ```
 
 
@@ -801,8 +801,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_lead_api_v2_enrich_leads_lead_id_put**
-> V2EnrichmentResponse update_lead_api_v2_enrich_leads_lead_id_put(lead_id, x_api_key, v2_lead_update_request)
+# **update_lead_api_v2_enrichment_leads_lead_id_put**
+> V2EnrichmentResponse update_lead_api_v2_enrichment_leads_lead_id_put(lead_id, x_api_key, v2_lead_update_request)
 
 Update Lead
 
@@ -835,11 +835,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Update Lead
-        api_response = api_instance.update_lead_api_v2_enrich_leads_lead_id_put(lead_id, x_api_key, v2_lead_update_request)
-        print("The response of V2B2BEnrichmentApi->update_lead_api_v2_enrich_leads_lead_id_put:\n")
+        api_response = api_instance.update_lead_api_v2_enrichment_leads_lead_id_put(lead_id, x_api_key, v2_lead_update_request)
+        print("The response of V2B2BEnrichmentApi->update_lead_api_v2_enrichment_leads_lead_id_put:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->update_lead_api_v2_enrich_leads_lead_id_put: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->update_lead_api_v2_enrichment_leads_lead_id_put: %s\n" % e)
 ```
 
 
@@ -875,8 +875,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **verify_email_api_v2_enrich_email_verify_post**
-> V2EnrichmentResponse verify_email_api_v2_enrich_email_verify_post(x_api_key, v2_email_verifier_request)
+# **verify_email_api_v2_enrichment_email_verify_post**
+> V2EnrichmentResponse verify_email_api_v2_enrichment_email_verify_post(x_api_key, v2_email_verifier_request)
 
 Verify Email
 
@@ -920,11 +920,11 @@ with llmhub_generated.ApiClient(configuration) as api_client:
 
     try:
         # Verify Email
-        api_response = api_instance.verify_email_api_v2_enrich_email_verify_post(x_api_key, v2_email_verifier_request)
-        print("The response of V2B2BEnrichmentApi->verify_email_api_v2_enrich_email_verify_post:\n")
+        api_response = api_instance.verify_email_api_v2_enrichment_email_verify_post(x_api_key, v2_email_verifier_request)
+        print("The response of V2B2BEnrichmentApi->verify_email_api_v2_enrichment_email_verify_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling V2B2BEnrichmentApi->verify_email_api_v2_enrich_email_verify_post: %s\n" % e)
+        print("Exception when calling V2B2BEnrichmentApi->verify_email_api_v2_enrichment_email_verify_post: %s\n" % e)
 ```
 
 
